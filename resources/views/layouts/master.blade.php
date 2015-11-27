@@ -29,8 +29,14 @@
               <li><a href="#">About</a></li>
               <li><a href="#">Contact</a></li>
             </ul>
+            @if(Auth::check())
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="../navbar-fixed-top/">Login</a></li>
+              <li><a href="{{ route('logout') }}">Log out</a></li>
+            </ul>
+            @else
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="{{ route('login') }}">Login</a></li>
+              @endif
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

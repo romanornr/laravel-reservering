@@ -15,6 +15,9 @@ Route::get('auth/login', ['as' => 'login', 'uses' =>'Auth\AuthController@getLogi
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', ['as'=>'logout', 'uses' => 'Auth\AuthController@getLogout']);
 
+# Dashboard
+Route::get('DashController', ['as' => 'dashboard', 'uses' =>'DashController@show']);
+
 Route::get('/', function () {
     return view('welcome');
 });

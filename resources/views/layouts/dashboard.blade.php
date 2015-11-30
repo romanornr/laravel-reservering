@@ -23,9 +23,9 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact</a></li>
+              <li class="active"><a href="#">Dashboard</a></li>
+              <li><a href="#">Klanten</a></li>
+              <li><a href="#">Settings</a></li>
             </ul>
             @if(Auth::check())
             <ul class="nav navbar-nav navbar-right">

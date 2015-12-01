@@ -6,7 +6,11 @@
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
       <h4>Aanvraag</h4>
+<<<<<<< HEAD
         {!! Form::open(['url' => 'travelrequest']) !!}
+=======
+        {!! Form::open(['url' => '']) !!}
+>>>>>>> c46c50ec88365d005aeec17365b19adb3ae165d0
 
     <div class="form-group">
    		{!! Form::radio('geslacht', 'man',['class'=>'form-control']) !!} de heer

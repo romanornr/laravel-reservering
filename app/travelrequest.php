@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class travelrequest extends Model
 {
+<<<<<<< HEAD
     protected $fillable = [
     	'voornaam',
     	'achternaam',
@@ -18,4 +19,7 @@ class travelrequest extends Model
     	'terug',
     	'toelichting'
     ];
+=======
+    //
+>>>>>>> c46c50ec88365d005aeec17365b19adb3ae165d0
 }

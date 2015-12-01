@@ -18,6 +18,9 @@ Route::get('auth/logout', ['as'=>'logout', 'uses' => 'Auth\AuthController@getLog
 # Dashboard
 Route::get('dashboard', ['as' => 'dashboard', 'uses' =>'DashController@show']);
 
+# klant
+Route::get('aanvraag', ['as' => 'aanvraag', 'uses' => 'TravelrequestController@create']);
+
 Route::get('/', function () {
     return view('welcome');
 });

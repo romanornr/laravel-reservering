@@ -26,7 +26,7 @@ class TravelrequestController extends Controller
      */
     public function create()
     {
-        //
+        return view('reisrequest');
     }
 
     /**

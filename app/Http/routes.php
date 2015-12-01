@@ -20,6 +20,7 @@ Route::get('dashboard', ['as' => 'dashboard', 'uses' =>'DashController@show']);
 
 # klant
 Route::get('aanvraag', ['as' => 'aanvraag', 'uses' => 'TravelrequestController@create']);
+route::resource('reisaanvraag', 'TravelrequestController');
 
 Route::get('/', function () {
     return view('welcome');

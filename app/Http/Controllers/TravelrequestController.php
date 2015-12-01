@@ -37,7 +37,8 @@ class TravelrequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $klant = new Klant;
+        $klant->voornaam = Input::get('voornaam');
     }
 
     /**

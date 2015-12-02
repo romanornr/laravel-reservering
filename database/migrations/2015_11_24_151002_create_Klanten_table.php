@@ -14,6 +14,7 @@ class CreateKlantenTable extends Migration
     {
         Schema::create('klanten', function (Blueprint $table){
             $table->increments('id');
+            $table->string('geslacht', 10);
             $table->string('voornaam', 32);
             $table->string('achternaam', 32);
             $table->string('email', 250)->nullable();

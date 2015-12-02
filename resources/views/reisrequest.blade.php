@@ -7,7 +7,7 @@
     <div class="col-sm-4 col-sm-offset-4">
       <h4>Aanvraag</h4>
         {!! Form::open([
-        'route' => 'aanvraag'
+        'action' => 'TravelrequestController@store'
         ]) !!}
 
     <div class="form-group">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Klant;
 
 class TravelrequestController extends Controller
 {
@@ -37,8 +38,14 @@ class TravelrequestController extends Controller
      */
     public function store(Request $request)
     {
+        //$klant = new App\Klant;
         $klant = new Klant;
-        $klant->voornaam = Input::get('voornaam');
+        $klant->geslacht = $request->get('geslacht');
+        $klant->voornaam = $request->get('voornaam');
+        $klant->achternaam = $request->get('achternaam');
+        $klant->email = $request->get('email');
+        $klant->telefoonnummer = $request->get('telefoonnummer');
+        $klant->save();
     }
 
     /**

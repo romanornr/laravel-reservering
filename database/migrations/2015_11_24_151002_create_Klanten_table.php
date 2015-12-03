@@ -12,7 +12,7 @@ class CreateKlantenTable extends Migration
      */
     public function up()
     {
-        Schema::create('klanten', function (Blueprint $table){
+        Schema::create('klant', function (Blueprint $table){
             $table->increments('id');
             $table->string('geslacht', 10);
             $table->string('voornaam', 32);

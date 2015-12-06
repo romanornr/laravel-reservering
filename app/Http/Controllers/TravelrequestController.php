@@ -1,11 +1,13 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
+use App\Aanvragen;
 use App\Klant;
 
 class TravelrequestController extends Controller
@@ -38,14 +40,30 @@ class TravelrequestController extends Controller
      */
     public function store(Request $request)
     {
-        //$klant = new App\Klant;
-        $klant = new Klant;
-        $klant->geslacht = $request->get('geslacht');
-        $klant->voornaam = $request->get('voornaam');
-        $klant->achternaam = $request->get('achternaam');
-        $klant->email = $request->get('email');
-        $klant->telefoonnummer = $request->get('telefoonnummer');
-        $klant->save();
+        $klant = Klant::create([
+        'geslacht' => $request->get('geslacht'),
+        'voornaam' => $request->get('voornaam'),
+        'achternaam' => $request->get('achternaam'),
+        'email' => $request->get('email'),
+        'telefoonnummer' => $request->get('telefoonnummer')
+        ]);
+        
+        /*
+            Geen Aanvragen::create
+            maar new Aanvragen
+        */
+            
+        $aanvragen = new Aanvragen([
+        'onderwerp' => $request->get('onderwerp'),
+        'bestemming' => $request->get('bestemming'),
+        'aantal' => $request->get('aantal'),
+        'vertrek' => $request->get('vertrek'),
+        'terug' => $request->get('terug'),
+        'toelichting' => $request->get('toelichting')
+        ]);
+
+        $klant->aanvragen()->save($aanvragen);
+        var_dump('saved...');
     }
 
     /**

@@ -17,11 +17,11 @@ class CreateAanvragenTable extends Migration
             $table->increments('id');
             $table->integer('klant_id')->unsigned();
             $table->string('onderwerp', 35);
-            $table->string('bestemming', 60);
-            $table->tinyInteger('aantal');
-            $table->date('vertrek');
-            $table->date('terug');
-            $table->mediumText('toelichting');
+            $table->string('bestemming', 60)->nullable();
+            $table->integer('aantal')->nullable();
+            $table->date('vertrek')->nullable();
+            $table->date('terug')->nullable();
+            $table->mediumText('toelichting')->nullable();
             $table->timestamps();
 
             $table->foreign('klant_id')->references('id')->on('klant')->onDelete('cascade');

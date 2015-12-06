@@ -46,8 +46,8 @@
 
 
     <div class="form-group">
-        {!! Form::label('aantal personen', 'aantal personen:') !!}
-        {!! Form::text('aantal personen',null,['class'=>'form-control']) !!}
+        {!! Form::label('aantal', 'aantal personen:') !!}
+        {!! Form::text('aantal',null,['class'=>'form-control']) !!}
     </div>
 
 

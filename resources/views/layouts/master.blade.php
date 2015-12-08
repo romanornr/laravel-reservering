@@ -32,15 +32,14 @@
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-            @if(Auth::check())
             <ul class="navbar-form pull-right">
+            @if(Auth::check())
               <a class="nav-link" href="{{ route('logout') }}">Logout</a>
             </ul>
             @else
-            <ul class="navbar-form pull-right">
               <a class="nav-link" href="{{ route('login') }}">Login</a>
               </ul>
-              @endif
+       @endif
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>

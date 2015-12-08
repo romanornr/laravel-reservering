@@ -22,7 +22,7 @@ class DashController extends Controller
 
 	public function show()
 	{
-		$aanvragen = Aanvragen::orderBy('id', 'asc')->get();
+		$aanvragen = Aanvragen::with('klant')->orderBy('id', 'asc')->get();
 		return view('dashboard.index',
 			compact('aanvragen'));
 	}

@@ -22,6 +22,7 @@ class DashController extends Controller
 
 	public function show()
 	{
+		//with -> Laravel N+1 problem -> sql query
 		$aanvragen = Aanvragen::with('klant')->orderBy('id', 'asc')->get();
 		return view('dashboard.index',
 			compact('aanvragen'));

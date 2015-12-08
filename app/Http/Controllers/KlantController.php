@@ -23,7 +23,7 @@ class KlantController extends Controller
      */
     public function index()
     {
-       $klanten = Klant::orderBy('id' ,'asc')->get();
+       $klanten = Klant::orderBy('id' ,'asc')->paginate(5);
         return view('dashboard.klantenlijst',
         	compact('klanten'));
     }

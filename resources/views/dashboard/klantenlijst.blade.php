@@ -25,6 +25,8 @@
      @endforeach
      </tbody>
 </table>
+{!! $klanten->render() !!}
 </div>
+
 
 @endsection

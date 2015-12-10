@@ -8,11 +8,13 @@ use App\Http\Controllers\Controller;
 
 use Auth;
 use App\User;
-use App\Klant;
+Use App\Klant;
 
 class KlantController extends Controller
 {
-	public function __construct()
+	private $klant;
+
+	public function __construct(Klant $klant)
 {
     $this->middleware('auth');
 }
@@ -57,7 +59,8 @@ class KlantController extends Controller
      */
     public function show($id)
     {
-        //
+        $klant = Klant::find($id);
+        return view('dashboard.klant', compact('klant'));
     }
 
     /**
@@ -68,7 +71,9 @@ class KlantController extends Controller
      */
     public function edit($id)
     {
-        //
+        $klant = Klant::find($id);
+        return view('dashboard.klantedit', compact('klant'));
+        $klant->save();
     }
 
     /**

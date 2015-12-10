@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
   <br></br>     
-<h4>Klantenlijst</h4>
+<h4>Klant</h4>
       <p></p>
 <table class="table table-bordered">
   <thead>
@@ -16,16 +16,17 @@
   </thead>
   <tbody>
     <tr>
-    @foreach ($klanten as $klant)
       <th scope="row">{{ $klant->id }}</th>
       <td>{{ $klant->voornaam }}</td>
       <td>{{ $klant->achternaam }}</td>
       <td>{{ $klant->email }}</td>
     </tr>
-     @endforeach
      </tbody>
 </table>
-{!! $klanten->render() !!}
+
+<a href="{{$klant->id}}/edit" type="button" class="btn btn-warning">edit</a></button>
+
+
 </div>
 
 

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -63,7 +62,7 @@ class TravelrequestController extends Controller
         ]);
 
         $klant->aanvragen()->save($aanvragen);
-        var_dump('saved...');
+        \Session::flash('flash_message', 'Uw aanvraag is verzonden en er word zo snel mogelijk contact met u opgenomen!');
     }
 
     /**

@@ -41,6 +41,8 @@ class KlantController extends Controller
         'email' => $request->get('email'),
         'telefoonnummer' => $request->get('telefoonnummer')
         ]);
+        \Session::flash('flash_message', 'De klant is aangemaakt!');
+        return redirect('dashboard/klanten');
     }
 
 
@@ -69,8 +71,8 @@ class KlantController extends Controller
 
     public function destroy($id)
     {
-        $klant = Klant::find($id);
-        $klant->delete();
+        $klant = Klant::find($id)->delete();
+        \Session::flash('flash_message', 'De klant is verwijderd uit de database!');
         return redirect('dashboard/klanten');
     }
 }

@@ -43,12 +43,24 @@
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
+
+@if(Session::has('flash_message'))
+<p></p>
+  <div class="alert alert-success">{{ Session::get('flash_message')}}</div>
+  @endif
+
 @yield('content')
 
 
 
   </div>
+
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script>
+      $('div.alert').delay(3000).slideUp(300);
+  </script>
 </body>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
 </html>

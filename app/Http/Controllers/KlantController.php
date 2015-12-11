@@ -62,6 +62,7 @@ class KlantController extends Controller
     {
         $input = $request->all();
         $klant = Klant::findOrFail($id)->fill($input)->save();
+        \Session::flash('flash_message', 'De klantgegvens zijn bijgwerkt!');
         return redirect('dashboard/klanten');
     }
 

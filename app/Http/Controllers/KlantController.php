@@ -18,11 +18,7 @@ class KlantController extends Controller
 {
     $this->middleware('auth');
 }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
        $klanten = Klant::orderBy('id' ,'asc')->paginate(5);
@@ -30,85 +26,50 @@ class KlantController extends Controller
         	compact('klanten'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('dashboard.klantcreate');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $klant = Klant::create([
+        'geslacht' => $request->get('geslacht'),
+        'voornaam' => $request->get('voornaam'),
+        'achternaam' => $request->get('achternaam'),
+        'email' => $request->get('email'),
+        'telefoonnummer' => $request->get('telefoonnummer')
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $klant = Klant::find($id);
         return view('dashboard.klant', compact('klant'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $klant = Klant::find($id);
         return view('dashboard.klantedit', compact('klant'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update($id, Request $request)
     {
         $input = $request->all();
         $klant = Klant::findOrFail($id)->fill($input)->save();
-        return redirect('dashboard');
-
-        //$klant->voornaam ='Ro';
-        //$klant->fill($input);
-        //$klant->save();
-       // $input->fill($input)->save($klant);
-
-       // dd(\Request::input());
-       // 
-        //$input = $request->all();
-        //$klant->save();
+        return redirect('dashboard/klanten');
     }
 
-    /**n 
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $klant = Klant::find($id);
         $klant->delete();
-        return redirect()->route('dashboard.index');
+        return redirect('dashboard/klanten');
     }
 }

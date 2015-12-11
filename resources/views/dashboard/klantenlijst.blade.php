@@ -3,9 +3,11 @@
 @section('content')
 <div class="container">
   <br></br>     
-<h4>Klantenlijst</h4>
+<h4>Klantenlijst</h4> 
       <p></p>
+      <a href="klanten/create" type="button" class="btn btn-success">Maak Klant aan</a></button>
 <table class="table table-bordered">
+<p></p>
   <thead>
     <tr>
       <th>id</th>
@@ -21,6 +23,7 @@
       <td>{{ $klant->voornaam }}</td>
       <td>{{ $klant->achternaam }}</td>
       <td>{{ $klant->email }}</td>
+      <td><a href="klanten/{{$klant->id}}" type="button" class="btn btn-warning">Details</a></button></td>
     </tr>
      @endforeach
      </tbody>

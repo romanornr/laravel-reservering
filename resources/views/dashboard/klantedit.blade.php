@@ -6,7 +6,10 @@
 <h4>Klanten Edit</h4>
       <p></p>
 	
-	{!! Form::model($klant, ['method' => 'PATCH']) !!}
+	{!! Form::model($klant, [
+	'method' => 'PUT',
+	'route' => ['dashboard.klanten.update', $klant->id]
+	]) !!}
 
 	<div class="form-group">
 	{!! Form::label('voornaam', 'voornaam:') !!}
@@ -30,6 +33,7 @@
 
     <div class="form-group">
     	{!! Form::submit('Update klant', ['class' => 'btn btn-primary']) !!}
+    </div>
 
     {!! Form::close() !!}
 

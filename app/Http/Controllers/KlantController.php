@@ -73,7 +73,6 @@ class KlantController extends Controller
     {
         $klant = Klant::find($id);
         return view('dashboard.klantedit', compact('klant'));
-        $klant->save();
     }
 
     /**
@@ -83,12 +82,24 @@ class KlantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
-        //
+        $input = $request->all();
+        $klant = Klant::findOrFail($id)->fill($input)->save();
+        return redirect('dashboard');
+
+        //$klant->voornaam ='Ro';
+        //$klant->fill($input);
+        //$klant->save();
+       // $input->fill($input)->save($klant);
+
+       // dd(\Request::input());
+       // 
+        //$input = $request->all();
+        //$klant->save();
     }
 
-    /**
+    /**n 
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -96,6 +107,8 @@ class KlantController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $klant = Klant::find($id);
+        $klant->delete();
+        return redirect()->route('dashboard.index');
     }
 }

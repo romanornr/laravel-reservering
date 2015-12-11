@@ -20,11 +20,20 @@
       <td>{{ $klant->voornaam }}</td>
       <td>{{ $klant->achternaam }}</td>
       <td>{{ $klant->email }}</td>
+      <td>
+      {!! Form::open([
+            'method' => 'DELETE',
+            'route' => ['dashboard.klanten.destroy', $klant->id]
+        ]) !!}
+            {!! Form::submit('Verwijder klant', ['class' => 'btn btn-danger']) !!}
+        {!! Form::close() !!}
+        </td>
     </tr>
      </tbody>
 </table>
 
 <a href="{{$klant->id}}/edit" type="button" class="btn btn-warning">edit</a></button>
+
 
 
 </div>

@@ -15,5 +15,10 @@ class Klant extends Model
 			return $this->hasMany('App\Aanvragen', 'klant_id', 'id');
 		}
 
+		public function booking()
+		{
+			return $this->hasMany('App\Booking', 'klant_id', 'id');
+		}
+
 }
 

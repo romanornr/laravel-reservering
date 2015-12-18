@@ -34,6 +34,13 @@
 
 <a href="{{$klant->id}}/edit" type="button" class="btn btn-warning">edit</a></button>
 
+      {!! Form::open([
+            'method' => 'GET',
+            'route' => ['dashboard.klanten.booking.create', $klant->id]
+        ]) !!}
+            {!! Form::submit('Boeken', ['class' => 'btn btn-danger']) !!}
+        {!! Form::close() !!}
+
 
 
 </div>

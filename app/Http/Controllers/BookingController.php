@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\User;
+Use App\Klant;
 
 class BookingController extends Controller
 {
@@ -24,9 +26,12 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($klant_id)
     {
-        //
+        // return geeft een waarde terug nadat je return hebt gedaan verwacht de functie niks meer dus kapt de functie. alles na return wordt niet uitgevoerd.
+        //return $klant_id; zo moet het werken
+        return view('dashboard.booking',compact('klant_id'));
+
     }
 
     /**
@@ -37,7 +42,21 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        $booking = new Booking([
+        'onderwerp' => $request->get('onderwerp'),
+        'bestemming' => $request->get('bestemming'),
+        'aantal' => $request->get('aantal'),
+        'vertrek' => $request->get('vertrek'),
+        'terug' => $request->get('terug'),
+        'toelichting' => $request->get('toelichting')
+        ]);
+
+        Klant::find($klant_id)->booking()->save($booking);
+
+        //$klant_id->booking()->save($booking);
+        \Session::flash('flash_message', 'Uw aanvraag is verzonden en er word zo snel mogelijk contact met u opgenomen!');
     }
 
     /**

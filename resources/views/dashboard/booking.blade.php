@@ -5,11 +5,11 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
-      <h4>Aanvraag</h4>
+    <br></br>
+      <h4>Boeken</h4>
         {!! Form::open([
-        'action' => 'TravelrequestController@opslaan'
+        'action' => 'BookingController@store'
         ]) !!}
-        {{$klant}}
 
     <div class="form-group">
         {!! Form::label('onderwerp', 'onderwerp:') !!}

@@ -49,7 +49,8 @@ class KlantController extends Controller
     public function show($id)
     {
         $klant = Klant::find($id);
-        return view('dashboard.klant', compact('klant'));
+        $bookings = Klant::find($id)->booking()->get();
+        return view('dashboard.klant', compact('klant', 'bookings'));
     }
 
 

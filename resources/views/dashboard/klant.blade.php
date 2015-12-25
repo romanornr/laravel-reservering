@@ -32,16 +32,34 @@
      </tbody>
 </table>
 
+
+
 <a href="{{$klant->id}}/edit" type="button" class="btn btn-warning">edit</a></button>
 
+
+<div style="width:92%; float:right;">
       {!! Form::open([
             'method' => 'GET',
             'route' => ['dashboard.klanten.booking.create', $klant->id]
         ]) !!}
-            {!! Form::submit('Boeken', ['class' => 'btn btn-danger']) !!}
+            {!! Form::submit('Boeken', ['class' => 'btn btn-success']) !!}
         {!! Form::close() !!}
+        </div>
 
+<p></p>
+@if( !$bookings->count())
+  <p> Deze klant heeft geen boeking</p>
+  @else
 
+@foreach ($bookings as $booking)
+      <div class="card card-block">
+  <h4 class="card-title">{{ $booking->type}}</h4>
+  <p class="card-text">Korting: {{ $booking -> discount }}</p>
+<a href="#" class="btn btn-primary">Details</a>
+</div>
+
+ @endforeach
+@endif
 
 </div>
 

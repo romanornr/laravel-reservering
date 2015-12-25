@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 Use App\Klant;
+Use App\Booking;
 
 class BookingController extends Controller
 {
@@ -16,9 +17,9 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+
     }
 
     /**
@@ -28,10 +29,7 @@ class BookingController extends Controller
      */
     public function create($klant_id)
     {
-        // return geeft een waarde terug nadat je return hebt gedaan verwacht de functie niks meer dus kapt de functie. alles na return wordt niet uitgevoerd.
-        //return $klant_id; zo moet het werken
         return view('dashboard.booking',compact('klant_id'));
-
     }
 
     /**
@@ -42,8 +40,6 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $booking = new Booking([
         'onderwerp' => $request->get('onderwerp'),
         'bestemming' => $request->get('bestemming'),
@@ -67,7 +63,10 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        //
+        //$klantid = Klant::find($id);
+        //$booking = $klantid::with('booking')->get();
+        
+       // return view('dashboard.klant', compact('bookings'));
     }
 
     /**

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Laravel</title>
-<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+<link href="https://cask.scotch.io/bootstrap-4.0-flex.css" rel="stylesheet">
 </head>
 
 <body>

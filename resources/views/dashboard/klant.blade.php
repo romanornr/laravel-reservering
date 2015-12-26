@@ -32,19 +32,21 @@
      </tbody>
 </table>
 
-
-
-<a href="{{$klant->id}}/edit" type="button" class="btn btn-warning">edit</a></button>
-
-
-<div style="width:92%; float:right;">
       {!! Form::open([
             'method' => 'GET',
-            'route' => ['dashboard.klanten.booking.create', $klant->id]
+            'route' => ['dashboard.klanten.booking.create', $klant->id],
+            'style'=>'display:inline-block'
         ]) !!}
             {!! Form::submit('Boeken', ['class' => 'btn btn-success']) !!}
         {!! Form::close() !!}
-        </div>
+
+      {!! Form::open([
+            'method' => 'GET',
+            'route' => ['dashboard.klanten.edit', $klant->id],
+            'style'=>'display:inline-block'
+        ]) !!}
+            {!! Form::submit('Edit', ['class' => 'btn btn-warning']) !!}
+        {!! Form::close() !!}
 
 <p></p>
 @if( !$bookings->count())
@@ -53,9 +55,31 @@
 
 @foreach ($bookings as $booking)
       <div class="card card-block">
-  <h4 class="card-title">{{ $booking->type}}</h4>
-  <p class="card-text">Korting: {{ $booking -> discount }}</p>
-<a href="#" class="btn btn-primary">Details</a>
+  <h4 class="card-title">{{ $booking->type}} reis</h4>
+  <p class="card-text">Korting: €{{ $booking -> discount }}</p>
+
+  @if($booking -> paid == 1)
+      <p class="card-text" style="color:green;">Betaald</p>
+      @else
+      <p class="card-text" style="color:red;">Niet Betaald</p>
+  @endif
+      {!! Form::open([
+            'method' => 'POST',
+            'route' => ['dashboard.klanten.booking.destroy', $booking->id],
+            'style'=>'display:inline-block'
+        ]) !!}
+            {!! Form::submit('PDF/Invoice', ['class' => 'btn btn-success']) !!}
+        {!! Form::close() !!}
+
+      {!! Form::open([
+            'method' => 'DELETE',
+            'route' => ['dashboard.klanten.booking.destroy', $booking->id],
+            'style'=>'display:inline-block'
+        ]) !!}
+            {!! Form::submit('Verwijder', ['class' => 'btn btn-danger']) !!}
+        {!! Form::close() !!}
+        </div>
+
 </div>
 
  @endforeach

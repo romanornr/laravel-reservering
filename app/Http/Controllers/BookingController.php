@@ -100,6 +100,10 @@ class BookingController extends Controller
      */
     public function destroy($id)
     {
-        //
+    	return 'hi';
+        //$booking = Booking::find($id);
+       // return $booking;
+       // \Session::flash('flash_message', 'De boeking is verwijderd uit de database!');
+       // return redirect('dashboard/klanten');
     }
 }

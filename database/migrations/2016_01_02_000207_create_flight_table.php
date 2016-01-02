@@ -19,6 +19,7 @@ class CreateflightTable extends Migration
             $table->boolean('multi_leg');
             $table->tinyInteger('stops')->default(0);
             $table->string('comment')->nullable();
+            $table->timestamps();
 
             $table->foreign('booking_id')->references('id')->on('booking')->onDelete('cascade');
         });

@@ -23,6 +23,7 @@ class CreatecostTable extends Migration
             $table->float('fare')->nullable();
             $table->float('fee')->nullable();
             $table->float('discount')->nullable();
+            $table->boolean('paid');
 
             $table->foreign('booking_id')->references('id')->on('booking')->onDelete('cascade');
         });

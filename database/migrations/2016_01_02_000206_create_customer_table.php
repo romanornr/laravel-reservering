@@ -26,6 +26,8 @@ class CreatecustomerTable extends Migration
             $table->string('mobile', 100)->nullable();
             $table->string('phone', 90)->nullable();
             $table->date('birthday');
+
+            $table->timestamps();
         });
     }
 

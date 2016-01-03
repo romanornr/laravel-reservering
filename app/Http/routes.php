@@ -27,6 +27,7 @@ Route::get('customer/{customer}', function(App\Customer $customer) {
 	return $customer;
 });
 
+//App::bind('App\Repositories\Customer\CustomerRepository', 'App\Repositories\Customer\DbCustomerRepository');
 Route::resource('test', 'CustomerController');
 
 

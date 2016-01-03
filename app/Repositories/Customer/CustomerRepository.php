@@ -1,6 +1,6 @@
 <?php 
 
-namespace Repositories\CustomerRepo;
+namespace App\Repositories\Customer;
 
 interface CustomerRepository {
 

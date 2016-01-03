@@ -1,6 +1,6 @@
 <?php
 
-namespace Repository;
+namespace App\Repositories;
 
 abstract class DbRepository {
 

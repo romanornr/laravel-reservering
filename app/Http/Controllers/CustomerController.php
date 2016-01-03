@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Repositories\CustomerRepository;
+use App\Repositories\Customer\CustomerRepository;
 use Auth;
 
 class CustomerController extends Controller

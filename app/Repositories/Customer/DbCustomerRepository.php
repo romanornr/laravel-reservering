@@ -1,8 +1,8 @@
 <?php
 
-namespace Repositories\Customer;
-use Repositories\DbRepository;
-use Customer;
+namespace App\Repositories\Customer;
+use App\Repositories\DbRepository;
+use App\Customer;
 
 class DbCustomerRepository extends DbRepository implements CustomerRepository {
 	/**

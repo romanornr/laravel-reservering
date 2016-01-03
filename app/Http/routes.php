@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -14,15 +13,22 @@
 Route::get('auth/login', ['as' => 'login', 'uses' =>'Auth\AuthController@getLogin']);
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', ['as'=>'logout', 'uses' => 'Auth\AuthController@getLogout']);
-
 # Dashboard
 Route::get('dashboard', ['as' => 'dashboard', 'uses' =>'DashController@show']);
 Route::resource('dashboard/klanten', 'KlantController');
 Route::resource('dashboard/klanten.booking', 'BookingController');
-
 # klant
 Route::get('aanvraag', ['as' => 'aanvraag', 'uses' => 'TravelrequestController@create']);
 route::post('aanvraag/save', ['uses'=> 'TravelrequestController@store']);
+
+#customer
+//grab specific customer by id
+Route::get('customer/{customer}', function(App\Customer $customer) {
+	return $customer;
+});
+
+Route::resource('test', 'CustomerController');
+
 
 Route::get('/', function () {
     return view('welcome');

@@ -10,4 +10,5 @@ interface CustomerRepository {
      * @param $id
      */
      public function getById($id);
+     public function getAll();
 }

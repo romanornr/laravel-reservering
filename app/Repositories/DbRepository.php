@@ -30,6 +30,7 @@ abstract class DbRepository {
 
 	public function getAll()
 	{
-		return $this->model->all();
+		//return $this->model->all();
+        return $this->model::orderBy('created_at' ,'asc')->paginate(50);
 	}
 }

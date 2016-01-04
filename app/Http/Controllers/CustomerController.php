@@ -29,7 +29,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customer = $this->customer->getAll();
+        return view('customer.index', compact('customer'));
     }
 
     /**

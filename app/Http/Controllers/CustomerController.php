@@ -61,7 +61,8 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        return $this->customer->getById($id);
+        $customer = $this->customer->getById($id);
+        return view('customer.show', compact('customer'));
     }
 
     /**

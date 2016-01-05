@@ -15,18 +15,18 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', ['as'=>'logout', 'uses' => 'Auth\AuthController@getLogout']);
 # Dashboard
 Route::get('dashboard', ['as' => 'dashboard', 'uses' =>'DashController@show']);
-Route::resource('dashboard/klanten', 'KlantController');
-Route::resource('dashboard/klanten.booking', 'BookingController');
+//Route::resource('dashboard/klanten', 'KlantController');
+//Route::resource('dashboard/klanten.booking', 'BookingController');
 # klant
-Route::get('aanvraag', ['as' => 'aanvraag', 'uses' => 'TravelrequestController@create']);
-route::post('aanvraag/save', ['uses'=> 'TravelrequestController@store']);
+//Route::get('aanvraag', ['as' => 'aanvraag', 'uses' => 'TravelrequestController@create']);
+//route::post('aanvraag/save', ['uses'=> 'TravelrequestController@store']);
 
 #customer
 //grab specific customer by id
 //Route::get('customer/{customer}', function(App\Customer $customer) {
 //	return $customer;
 //});
-
+Route::get('customer', ['as' => 'customer', 'uses' =>'CustomerController@show']);
 Route::resource('customer', 'CustomerController');
 
 

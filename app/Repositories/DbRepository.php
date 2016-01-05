@@ -63,4 +63,17 @@ abstract class DbRepository {
 		$givenInput = $request->all();
 		return $this->model->create($givenInput);
 	}
+
+
+     /**
+     * request all (new) input and save updated record
+     *
+     * 
+     * @return mixed 
+     */
+	public function updateRecord($request, $id)
+	{
+		$newInput = $request->all();
+		return $this->model->find($id)->fill($newInput)->save();
+	}
 }

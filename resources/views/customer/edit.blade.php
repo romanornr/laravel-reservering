@@ -5,14 +5,13 @@
 <div class="col-sm-8">
 
 <div class="container">
-  <br></br>     
-        {!! Form::open([
-        'method' => 'POST',
-        'route' => ['customer.store'],
-        'style'=>'display:inline-block'
-        ]) !!}
+  <br></br>
+  {!! Form::model($customer, [
+	'method' => 'PUT',
+	'route' => ['customer.update', $customer->id]
+	]) !!}
 
-<div class="row">
+	<div class="row">
     <div class="form-group">
         {!! Form::label('firstname', 'firstname:') !!}
         {!! Form::text('firstname',null,['class'=>'form-control','required' => 'required']) !!}

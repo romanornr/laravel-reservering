@@ -18,7 +18,13 @@
     <p class="card-text">mobile number: {{ $customer-> mobile}}</p>
     <p class="card-text">phone nummer: {{ $customer-> phone}}</p>
     <p class="card-text">date of birth: {{ $customer-> birthday}}</p>
-    <a href="#" class="btn btn-primary">Update personal info</a>
+       {!! Form::open([
+            'method' => 'GET',
+            'route' => ['customer.edit', $customer->id],
+            'style'=>'display:inline-block'
+        ]) !!}
+            {!! Form::submit('Update personal info', ['class' => 'btn btn-primary']) !!}
+        {!! Form::close() !!}
 
           {!! Form::open([
             'method' => 'DELETE',

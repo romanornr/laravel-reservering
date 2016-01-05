@@ -30,7 +30,7 @@ class CustomerController extends Controller
     public function index()
     {
         $customer = $this->customer->getAll();
-        return view('customer.index', compact('customer'));
+        return view('customer.index', compact('customer')); 
     }
 
     /**
@@ -53,7 +53,7 @@ class CustomerController extends Controller
     {
         $customer = $this->customer->createNew($request);
         \Session::flash('flash_message', 'New customer has been created');
-         return view('dashboard.index');
+         return redirect('customer');
     }
 
     /**
@@ -76,7 +76,8 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer = $this->customer->getById($id);
+        return view('customer.edit', compact('customer'));
     }
 
     /**
@@ -86,9 +87,12 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
-        //
+        $this->customer->updateRecord($request, $id);
+        $customer = $this->customer->getById($id);
+        \Session::flash('flash_message', 'Customer record has been updated');
+        return view('customer.show', compact('customer'));
     }
 
     /**
@@ -101,6 +105,6 @@ class CustomerController extends Controller
     {
         $customer = $this->customer->deleteById($id);
         \Session::flash('flash_message', 'De klant is verwijderd uit de database!');
-        return view('customer');
+        return redirect('customer');
     }
 }

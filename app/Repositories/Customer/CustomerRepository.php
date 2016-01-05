@@ -34,4 +34,12 @@ interface CustomerRepository {
      * @return mixed 
      */
 	public function createNew($request);
+
+     /**
+     * request all (new) input and save updated record
+     *
+     * 
+     * @return mixed 
+     */
+     public function updateRecord($request, $id);
 }

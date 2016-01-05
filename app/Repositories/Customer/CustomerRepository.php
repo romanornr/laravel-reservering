@@ -26,4 +26,12 @@ interface CustomerRepository {
      * @return mixed 
      */
      public function deleteById($id);
+
+     /**
+     * request all input and create new record
+     *
+     * 
+     * @return mixed 
+     */
+	public function createNew($request);
 }

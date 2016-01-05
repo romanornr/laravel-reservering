@@ -40,7 +40,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customer.create');
     }
 
     /**
@@ -51,7 +51,9 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = $this->customer->createNew($request);
+        \Session::flash('flash_message', 'New customer has been created');
+         return view('dashboard.index');
     }
 
     /**

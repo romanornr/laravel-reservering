@@ -51,4 +51,16 @@ abstract class DbRepository {
 	{
 		return $this->model->find($id)->delete();
 	}
+
+     /**
+     * request all input and create new record
+     *
+     * 
+     * @return mixed 
+     */
+	public function createNew($request)
+	{
+		$givenInput = $request->all();
+		return $this->model->create($givenInput);
+	}
 }

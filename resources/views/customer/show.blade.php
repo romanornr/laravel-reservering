@@ -19,6 +19,16 @@
     <p class="card-text">phone nummer: {{ $customer-> phone}}</p>
     <p class="card-text">date of birth: {{ $customer-> birthday}}</p>
     <a href="#" class="btn btn-primary">Update personal info</a>
+
+          {!! Form::open([
+            'method' => 'DELETE',
+            'route' => ['customer.destroy', $customer->id],
+            'style'=>'display:inline-block'
+        ]) !!}
+            {!! Form::submit('delete customer', ['class' => 'btn btn-danger']) !!}
+        {!! Form::close() !!}
+
+
   </div>
   <div class="card-footer text-muted">
     Created at {{ $customer->created_at }}

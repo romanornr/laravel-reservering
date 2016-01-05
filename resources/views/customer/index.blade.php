@@ -32,7 +32,7 @@
       <td>{{ $customers->zipcode}}</td>
       <td>{{ $customers->city}}</td>
       <td>{{ $customers->email}}</td>
-      <td><a href="" type="button" class="btn btn-warning">Details</a></button></td>
+      <td><a href="customer/{{ $customers->id}}" type="button" class="btn btn-warning">Details</a></button></td>
     </tr>
      @endforeach
      </tbody>

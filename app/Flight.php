@@ -10,8 +10,8 @@ class Flight extends Model
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     //relatie
-    public function Booking()
+    public function booking()
     {
-    	return $this->belongsTo('App\Booking','booking_id');
+    	return $this->morphMany('App\Booking', 'bookingable');
     }
 }

@@ -4,6 +4,6 @@ namespace App\Repositories\Flight;
 
 interface FlightRepository {
 
-	public function addBookingDetail($request);
+	public function addBookingDetail($request, $id);
 	
 }

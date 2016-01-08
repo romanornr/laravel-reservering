@@ -21,11 +21,8 @@ class DbFlightRepository extends DbRepository implements FlightRepository {
 	}
 
 
-	public function addBookingDetail($request)
+	public function addBookingDetail($request, $id)
 	{
-		//$givenInput = $request->all();
-		//return $this->model->create($givenInput);
-
 		//Customer::find($customer_id)->booking()->save($booking);
 		//return $customer = Customer::find($customer_id);
 		//$booking = new Booking([
@@ -34,9 +31,17 @@ class DbFlightRepository extends DbRepository implements FlightRepository {
         //return $id;
 
         //return Customer::find($customer_id);
-        return Customer::find($id);
+		//return $var = $this->model->find($id);
+     //   $customer = Customer::find($id);
+        //return $this->model->booking()->save($var);
+       	$givenInput = $request->all();
+		$data = $this->model->create($givenInput);
+		//return $data->id;
+      	return $add = $this->model->booking()->create($data);
 
-        //Flight::find($flight_id)->booking()->save($booking);
+     //return $this->model->booking();
+
+
 	}
 
 }

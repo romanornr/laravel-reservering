@@ -51,11 +51,11 @@ class FlightController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-       // $flight = $this->flight->addBookingDetail($request);
-        \Session::flash('flash_message', 'New flight has been created');
-        return redirect('customer');
+       return $flight = $this->flight->addBookingDetail($request, $id);
+        //\Session::flash('flash_message', 'New flight has been created');
+        //return redirect('customer');
     }
 
     /**

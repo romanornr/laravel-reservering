@@ -9,9 +9,14 @@ class Booking extends Model
     protected $table = 'booking';
     protected $guarded = [];
 
+    public function bookingable()
+    {
+        return $this->morphTo();
+    }
+
     public function Customer()
     {
-    	return $this->belongsTo('App\Klant','customer_id');
+    	return $this->belongsTo('App\Customer','customer_id');
     }
 
     public function Flight()

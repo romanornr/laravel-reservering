@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Repositories\Flight\FlightRepository;
 use Auth;
+use App\Customer;
 
 class FlightController extends Controller
 {
@@ -38,9 +39,10 @@ class FlightController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('booking.flight.create');
+        $customer = Customer::find($id);
+        return view('booking.flight.create',compact('customer'));
     }
 
     /**
@@ -51,7 +53,7 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-        $flight = $this->flight->addBookingDetail($request);
+       // $flight = $this->flight->addBookingDetail($request);
         \Session::flash('flash_message', 'New flight has been created');
         return redirect('customer');
     }

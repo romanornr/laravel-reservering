@@ -27,7 +27,7 @@ Route::get('dashboard', ['as' => 'dashboard', 'uses' =>'DashController@show']);
 //	return $customer;
 //});
 Route::resource('customer', 'CustomerController');
-Route::resource('flight', 'FlightController');
+Route::resource('customer.flight', 'FlightController');
 
 Route::get('/', function () {
     return view('welcome');

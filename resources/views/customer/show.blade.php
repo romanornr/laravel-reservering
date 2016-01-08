@@ -42,7 +42,7 @@
 
         {!! Form::open([
             'method' => 'GET',
-            'route' => ['flight.create', $customer->id],
+            'route' => ['customer.flight.create', $customer->id],
             'style'=>'display:inline-block'
         ]) !!}
             {!! Form::submit('Boeken', ['class' => 'btn btn-success']) !!}

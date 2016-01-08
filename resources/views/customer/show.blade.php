@@ -7,7 +7,7 @@
 
 <div class="card">
   <div class="card-header">
-    Customer Personal information - {{ $customer->firstname }} {{ $customer->infix }} {{ $customer-> lastname }}
+    {{ $customer->firstname }} {{ $customer->infix }} {{ $customer-> lastname }} - Personal information 
   </div>
   <div class="card-block">
     <p class="card-text">gender: {{ $customer-> gender}}</p>
@@ -39,6 +39,15 @@
   <div class="card-footer text-muted">
     Created at {{ $customer->created_at }}
   </div>
+
+        {!! Form::open([
+            'method' => 'GET',
+            'route' => ['flight.create', $customer->id],
+            'style'=>'display:inline-block'
+        ]) !!}
+            {!! Form::submit('Boeken', ['class' => 'btn btn-success']) !!}
+        {!! Form::close() !!}
+
 </div>
 
 

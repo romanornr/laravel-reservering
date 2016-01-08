@@ -103,7 +103,7 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        $customer = $this->customer->deleteById($id);
+        $this->customer->deleteById($id);
         \Session::flash('flash_message', 'De klant is verwijderd uit de database!');
         return redirect('customer');
     }

@@ -27,9 +27,10 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($klant_id)
+    public function create()
     {
-        return view('dashboard.booking',compact('klant_id'));
+        //return view('dashboard.booking',compact('klant_id'));
+        return view('booking.flight.create')
     }
 
     /**

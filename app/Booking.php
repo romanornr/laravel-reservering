@@ -7,22 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     protected $table = 'booking';
-    protected $fillable = ['klant_id','onderwerp','bookingDate','DepartureDate','type','discount','paid'];
+    protected $guarded = [];
 
-    public function klant()
+    public function Customer()
     {
-    	return $this->belongsTo('App\Klant','klant_id');
-        
-        $aanvragen = new Aanvragen([
-        'onderwerp' => $request->get('onderwerp'),
-        'bestemming' => $request->get('bestemming'),
-        'aantal' => $request->get('aantal'),
-        'vertrek' => $request->get('vertrek'),
-        'terug' => $request->get('terug'),
-        'toelichting' => $request->get('toelichting')
-        ]);
-
-        $klant->aanvragen()->save($aanvragen);
-        \Session::flash('flash_message', 'Uw aanvraag is verzonden en er word zo snel mogelijk contact met u opgenomen!');
+    	return $this->belongsTo('App\Klant','customer_id');
     }
+
+    public function Flight()
+    {
+    	return $this->hasOne('App\Flight','flight_id');
+    }
+
+    public function Passenger()
+    {
+    	return $this->hasMany('App\Passenger','passenger_id');
+    }
+
+    public function Cost()
+    {
+    	return $this->hasOne('App\Cost','cost_id');
+    }
+
 }

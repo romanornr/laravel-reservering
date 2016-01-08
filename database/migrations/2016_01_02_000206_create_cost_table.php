@@ -14,7 +14,6 @@ class CreatecostTable extends Migration
     {
         Schema::create('cost', function (Blueprint $table){
             $table->increments('id');
-            $table->integer('booking_id')->unsigned();
             $table->float('reservation')->nullable();
             $table->float('land_arrangment')->nullable();
             $table->float('travel_insurrance')->nullable();
@@ -25,7 +24,6 @@ class CreatecostTable extends Migration
             $table->float('discount')->nullable();
             $table->boolean('paid');
 
-            $table->foreign('booking_id')->references('id')->on('booking')->onDelete('cascade');
         });
     }
 

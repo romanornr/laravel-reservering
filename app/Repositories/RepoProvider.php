@@ -16,5 +16,11 @@ class RepositoryServiceProvider extends ServiceProvider {
 			'App\Repositories\Customer\CustomerRepository', 
 			'App\Repositories\Customer\DbCustomerRepository'
 		);
+
+        $this->app->bind(
+            'App\Repositories\Flight\FlightRepository', 
+            'App\Repositories\Flight\DbFlightRepository'
+        );
+
     }
 }

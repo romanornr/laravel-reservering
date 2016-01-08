@@ -86,7 +86,7 @@
 
 
     <div class="form-group">
-        {!! Form::submit('Verzend', ['class' => 'btn btn-primary form-control']) !!}
+        {!! Form::submit('Submit', ['class' => 'btn btn-primary form-control']) !!}
     </div>
     {!! Form::close() !!}
 

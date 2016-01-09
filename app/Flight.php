@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Flight extends Model
 {
     protected $table = 'flight';
-    protected $guarded = ['id', 'created_at', 'updated_at'];
+    protected $guarded = ['id'];
+    public $timestamps = false;
 
     //relatie
     public function booking()

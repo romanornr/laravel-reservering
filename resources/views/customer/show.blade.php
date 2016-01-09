@@ -18,6 +18,16 @@
     <p class="card-text">mobile number: {{ $customer-> mobile}}</p>
     <p class="card-text">phone nummer: {{ $customer-> phone}}</p>
     <p class="card-text">date of birth: {{ $customer-> birthday}}</p>
+
+
+        {!! Form::open([
+            'method' => 'GET',
+            'route' => ['customer.flight.create', $customer->id],
+            'style'=>'display:inline-block'
+        ]) !!}
+            {!! Form::submit('Create booking', ['class' => 'btn btn-success']) !!}
+        {!! Form::close() !!}
+
        {!! Form::open([
             'method' => 'GET',
             'route' => ['customer.edit', $customer->id],
@@ -34,23 +44,9 @@
             {!! Form::submit('delete customer', ['class' => 'btn btn-danger']) !!}
         {!! Form::close() !!}
 
-
   </div>
   <div class="card-footer text-muted">
-    Created at {{ $customer->created_at }}
-  </div>
-
-        {!! Form::open([
-            'method' => 'GET',
-            'route' => ['customer.flight.create', $customer->id],
-            'style'=>'display:inline-block'
-        ]) !!}
-            {!! Form::submit('Boeken', ['class' => 'btn btn-success']) !!}
-        {!! Form::close() !!}
-
-</div>
-
-
+    Created at {{ $customer->created_at->format('d-m-Y H:i:s') }}
 
 </div>
 

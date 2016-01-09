@@ -8,7 +8,6 @@ class Booking extends Model
 {
     protected $table = 'booking';
     protected $guarded = ['id'];
-    public $timestamps = false;
 
     public function customer()
     {

@@ -9,9 +9,9 @@ class Customer extends Model
     protected $table = 'customer';
     protected $guarded = ['id','created_at','updated_at'];
 
-    public function Booking()
+    public function booking()
     {
-    	return $this->hasMany('App\Booking','booking_id');
+    	return $this->hasMany('App\Booking','customer_id');
     }
     
 }

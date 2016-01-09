@@ -7,19 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     protected $table = 'booking';
-    protected $guarded = [];
+    protected $guarded = ['id'];
+    public $timestamps = false;
 
-    public function bookingable()
-    {
-        return $this->morphTo();
-    }
-
-    public function Customer()
+    public function customer()
     {
     	return $this->belongsTo('App\Customer','customer_id');
     }
 
-    public function Flight()
+    public function flight()
     {
     	return $this->hasOne('App\Flight','flight_id');
     }

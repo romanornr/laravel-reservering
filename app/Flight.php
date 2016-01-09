@@ -12,6 +12,6 @@ class Flight extends Model
     //relatie
     public function booking()
     {
-    	return $this->morphMany('App\Booking', 'bookingable');
+    	return $this->belongsTo('App\Booking','flight_id');
     }
 }

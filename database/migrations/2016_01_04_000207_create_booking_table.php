@@ -18,11 +18,11 @@ class CreateBookingTable extends Migration
             $table->integer('flight_id')->unsigned();
             $table->integer('passenger_id')->unsigned();
             $table->integer('cost_id')->unsigned();
-           
-            $table->foreign('customer_id')->references('id')->on('customer')->onDelete('cascade');
-            $table->foreign('flight_id')->references('id')->on('flight')->onDelete('cascade');
-            $table->foreign('cost_id')->references('id')->on('cost')->onDelete('cascade');
-            $table->foreign('passenger_id')->references('id')->on('passenger')->onDelete('cascade');
+
+            $table->foreign('customer_id')->references('id')->on('customer');
+            $table->foreign('flight_id')->references('id')->on('flight');
+            $table->foreign('cost_id')->references('id')->on('cost');
+            $table->foreign('passenger_id')->references('id')->on('passenger');
         });
     }
 

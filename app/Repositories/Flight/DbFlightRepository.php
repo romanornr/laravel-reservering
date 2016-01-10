@@ -28,7 +28,6 @@ class DbFlightRepository extends DbRepository implements FlightRepository {
         $customer = Customer::find($id);
       	return Booking::create(['customer_id' => $customer->id,
                          		'flight_id' => $data->id]);
-      	$data::rollback();
 	}
 
 }

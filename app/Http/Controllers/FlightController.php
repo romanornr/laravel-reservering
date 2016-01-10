@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 
 use App\Repositories\Flight\FlightRepository;
 use App\Repositories\Customer\CustomerRepository;
-use App\Customer;
 use Auth;
 
 

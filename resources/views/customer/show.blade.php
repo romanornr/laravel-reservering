@@ -51,11 +51,6 @@
 
 {{$customer->booking}}
 <br></br>
-@foreach ($booking as $bookings)
-{{$bookings->flight->departure}}
-{{$bookings->flight->arrival}}
-{{$bookings->flight->comment}}
-@endforeach
 
 @endsection
 

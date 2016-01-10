@@ -14,4 +14,8 @@ class Customer extends Model
     	return $this->hasMany('App\Booking','customer_id','id');
     }
     
+     public function flight()
+    {
+    	return $this->hasMany('App\Flight','id','id');
+    }
 }

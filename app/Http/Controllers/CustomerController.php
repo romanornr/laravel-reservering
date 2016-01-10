@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Customer\CustomerRepository;
+use App\Repositories\Booking\BookingRepository;
 use Auth;
 
 class CustomerController extends Controller
@@ -16,10 +17,12 @@ class CustomerController extends Controller
      * @var CustomerRepository
      */
     private $customer;
-    public function __construct(CustomerRepository $customer)
+    public function __construct(CustomerRepository $customer, BookingRepository $booking)
     {
         $this->middleware('auth');
+        $this->booking = $booking;
         $this->customer = $customer;
+
     }
 
     /**
@@ -65,7 +68,8 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customer = $this->customer->getById($id);
-        return view('customer.show', compact('customer'));
+        $booking = $this->booking->getAll();
+        return view('customer.show', compact('customer','booking'));
     }
 
     /**

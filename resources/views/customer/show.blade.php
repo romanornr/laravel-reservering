@@ -47,8 +47,15 @@
   </div>
   <div class="card-footer text-muted">
     Created at {{ $customer->created_at->format('d-m-Y H:i:s') }}
+    </div>
 
-</div>
+{{$customer->booking}}
+<br></br>
+@foreach ($booking as $bookings)
+{{$bookings->flight->departure}}
+{{$bookings->flight->arrival}}
+{{$bookings->flight->comment}}
+@endforeach
 
 @endsection
 

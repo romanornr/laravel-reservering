@@ -16,7 +16,7 @@ class Booking extends Model
 
     public function flight()
     {
-    	return $this->hasOne('App\Flight','flight_id');
+    	return $this->hasOne('App\Flight','id','flight_id');
     }
 
     public function Passenger()

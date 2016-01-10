@@ -3,7 +3,6 @@
 namespace App\Repositories\Booking;
 use App\Repositories\DbRepository;
 use App\Booking;
-use App\Customer;
 
 class DbBookingRepository extends DbRepository implements BookingRepository {
 	/**
@@ -19,11 +18,9 @@ class DbBookingRepository extends DbRepository implements BookingRepository {
 		$this->model = $model;
 	}
 
-	public function getBooking()
+	public function getBooking($id)
 	{
-		//$booking = Customer::find($id)->booking()->get();
-		return $this->model->orderBy('created_at' ,'asc')->with('flight')->get();
-		return $this->model->with('passenger')->get();
+		return $this->model->where('customer_id', $id)->orderBy('id' ,'desc')->with('flight','passenger')->get();
 	}
 
 }

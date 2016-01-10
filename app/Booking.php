@@ -19,9 +19,9 @@ class Booking extends Model
     	return $this->hasOne('App\Flight','id','flight_id');
     }
 
-    public function Passenger()
+    public function passenger()
     {
-    	return $this->hasMany('App\Passenger','passenger_id');
+    	return $this->hasMany('App\Passenger','id');
     }
 
     public function Cost()

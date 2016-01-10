@@ -48,8 +48,59 @@
   <div class="card-footer text-muted">
     Created at {{ $customer->created_at->format('d-m-Y H:i:s') }}
     </div>
+    </div>
+<br></br>
 
-{{$customer->booking}}
+
+@foreach ($booking as $bookings)
+{{$bookings->passenger}}
+<div class="card">
+  <div class="card-header">
+    <b> Outbound: {{$bookings->flight->arrival}} to {{$bookings->flight->departure}}</b>
+  </div>
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Flight</th>
+      <th>Arrives</th>
+      <th>Departs</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>{{$bookings->flight->arrival}}</td>
+      <td>{{$bookings->flight->departure}}</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="card-footer text-muted">Extra info</div>
+<div class="card-block">
+    <p class="card-text">Type: {{$bookings->flight->type}} &nbsp &nbsp Multi_leg:{{$bookings->flight->multi_leg}} &nbsp &nbsp stops: {{$bookings->flight->stops}}</p>
+    <p class="card-text">comment: {{$bookings->flight->comment}}</p>
+    </div>
+<div class="card-footer text-muted">{{ $bookings->created_at->format('d-m-Y H:i:s') }}</div>
+</div>
+
+
+<br>
+
+@endforeach
 <br></br>
 
 @endsection

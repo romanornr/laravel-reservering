@@ -17,7 +17,7 @@ interface BookingRepository {
      * @param $id
      * @return mixed 
      */
-     public function getBooking();
+     public function getBooking($id);
 
      public function getAll();
 

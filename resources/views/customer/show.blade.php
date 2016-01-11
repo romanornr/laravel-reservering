@@ -51,16 +51,13 @@
     </div>
 <br></br>
 
-
+@if( !$booking->count())
+    This customer has no bookings
+@else
 @foreach ($booking as $bookings)
-@foreach($bookings->passenger as $pas)
-{{$pas->firstname}}
-{{$bookings->customer->firstname}}
-@endforeach
-
 <div class="card">
   <div class="card-header">
-    <b> Outbound: {{$bookings->flight->arrival}} to {{$bookings->flight->departure}}</b>
+    <b> {{ $bookings->id }} Outbound: {{$bookings->flight->arrival}} to {{$bookings->flight->departure}}</b>
   </div>
 <table class="table">
   <thead class="thead-inverse">
@@ -93,21 +90,63 @@
   </tbody>
 </table>
 
-<div class="card-footer text-muted">Extra info</div>
-<div class="card-block">
-    <p class="card-text">Type: {{$bookings->flight->type}} &nbsp &nbsp Multi_leg:{{$bookings->flight->multi_leg}} &nbsp &nbsp stops: {{$bookings->flight->stops}}</p>
-    <p class="card-text">comment: {{$bookings->flight->comment}}</p>
-    </div>
+{{$bookings->passenger}}
+<div class="card-footer text-muted">Passengers</div>
+<table class="table table-sm">
+  <thead>
+    <tr>
+    <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>gender</th>
+      <th>born</th>
+      <th>Edit/Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th scope="row"></th>
+      <td> {{ $bookings->customer->firstname }}</td>
+      <td> {{ $bookings->customer->infix }} {{ $bookings->customer->lastname }}</td>
+      <td> {{ $bookings->customer->gender }}</td>
+      <td> {{ $bookings->customer->birthday }}</td>
+    </tr>
+  @foreach ($bookings->passenger as $passengers)
+    <tr>
+    <th scope="row"></th>
+      <td> {{ $passengers-> firstname }}</td>
+      <td> {{ $passengers-> lastname }}</td>
+      <td> {{ $passengers-> gender }}</td>
+      <td> {{ $passengers-> birthday }}</td>
+      <td> 
+{!! Form::open([
+            'method' => 'DELETE',
+            'route' => ['booking.passenger.destroy', $passengers->id, $bookings->id],
+            'style'=>'display:inline-block'
+        ]) !!}
+            {!! Form::submit('delete customer', ['class' => 'btn btn-danger-outline btn-sm']) !!}
+        {!! Form::close() !!}
+        </td>
+
+    </tr>
+    @endforeach
+  </tbody>
+</table>
 
 {!! Form::open([
             'method' => 'GET',
             'route' => ['booking.passenger.create', $bookings->id],
             'style'=>'display:inline-block'
         ]) !!}
-            {!! Form::submit('Add passenger', ['class' => 'btn btn-success']) !!}
+            {!! Form::submit('Add passenger', ['class' => 'btn btn-success-outline btn-sm']) !!}
         {!! Form::close() !!}
-        {{$bookings->id}}
+<p></p>
 
+<div class="card-footer text-muted">Extra info</div>
+<div class="card-block">
+    <p class="card-text">Type: {{$bookings->flight->type}} &nbsp &nbsp Multi_leg:{{$bookings->flight->multi_leg}} &nbsp &nbsp stops: {{$bookings->flight->stops}}</p>
+    <p class="card-text">comment: {{$bookings->flight->comment}}</p>
+    </div>
 
 <div class="card-footer text-muted">{{ $bookings->created_at->format('d-m-Y H:i:s') }}</div>
 </div>
@@ -116,6 +155,7 @@
 <br>
 
 @endforeach
+@endif
 <br></br>
 
 @endsection

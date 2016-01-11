@@ -101,6 +101,6 @@ class PassengerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->model->deleteByid($id);
     }
 }

@@ -43,7 +43,7 @@ class FlightController extends Controller
      */
     public function create($id)
     {
-        $customer = Customer::find($id);
+        $customer = $this->customer->getById($id);
         return view('booking.flight.create',compact('customer'));
     }
 

@@ -6,9 +6,23 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Repositories\Passenger\PassengerRepository;
+use App\Repositories\Booking\BookingRepository;
+use Auth;
 
 class PassengerController extends Controller
 {
+    /**
+     * @var PassengerRepository
+     */
+    private $passenger;
+    public function __construct(PassengerRepository $passenger, BookingRepository $booking)
+    {
+        $this->middleware('auth');
+        $this->passenger = $passenger;
+        $this->booking = $booking;
+    } 
+
     /**
      * Display a listing of the resource.
      *
@@ -24,9 +38,10 @@ class PassengerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $booking = $this->booking->getById($id);
+        return view('booking.passenger.create', compact('booking'));
     }
 
     /**
@@ -35,9 +50,13 @@ class PassengerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+    	$booking = $this->booking->getById($id);
+    	$customer = $booking->customer_id;
+        $passenger = $this->passenger->addBookingDetail($request, $id);
+        \Session::flash('flash_message', 'New passenger has been created');
+        return redirect()->action('CustomerController@show', [$customer]);
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repositories;
+use App\Booking;
 
 abstract class DbRepository {
 
@@ -76,4 +77,5 @@ abstract class DbRepository {
 		$newInput = $request->all();
 		return $this->model->find($id)->fill($newInput)->save();
 	}
+    
 }

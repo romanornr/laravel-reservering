@@ -53,7 +53,11 @@
 
 
 @foreach ($booking as $bookings)
-{{$bookings->passenger}}
+@foreach($bookings->passenger as $pas)
+{{$pas->firstname}}
+{{$bookings->customer->firstname}}
+@endforeach
+
 <div class="card">
   <div class="card-header">
     <b> Outbound: {{$bookings->flight->arrival}} to {{$bookings->flight->departure}}</b>
@@ -94,6 +98,17 @@
     <p class="card-text">Type: {{$bookings->flight->type}} &nbsp &nbsp Multi_leg:{{$bookings->flight->multi_leg}} &nbsp &nbsp stops: {{$bookings->flight->stops}}</p>
     <p class="card-text">comment: {{$bookings->flight->comment}}</p>
     </div>
+
+{!! Form::open([
+            'method' => 'GET',
+            'route' => ['booking.passenger.create', $bookings->id],
+            'style'=>'display:inline-block'
+        ]) !!}
+            {!! Form::submit('Add passenger', ['class' => 'btn btn-success']) !!}
+        {!! Form::close() !!}
+        {{$bookings->id}}
+
+
 <div class="card-footer text-muted">{{ $bookings->created_at->format('d-m-Y H:i:s') }}</div>
 </div>
 

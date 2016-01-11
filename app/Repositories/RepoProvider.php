@@ -27,5 +27,10 @@ class RepositoryServiceProvider extends ServiceProvider {
             'App\Repositories\Booking\DbBookingRepository'
         );
 
+        $this->app->bind(
+            'App\Repositories\Passenger\PassengerRepository', 
+            'App\Repositories\Passenger\DbPassengerRepository'
+        );
+
     }
 }

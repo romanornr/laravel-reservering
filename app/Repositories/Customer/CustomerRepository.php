@@ -42,4 +42,5 @@ interface CustomerRepository {
      * @return mixed 
      */
      public function updateRecord($request, $id);
+
 }

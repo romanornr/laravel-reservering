@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Passenger\PassengerRepository;
 use App\Repositories\Booking\BookingRepository;
+use App\Booking;
 use Auth;
 
 class PassengerController extends Controller
@@ -101,6 +102,8 @@ class PassengerController extends Controller
      */
     public function destroy($id)
     {
-        $this->model->deleteByid($id);
+    	$this->passenger->deleteByid($id);
+    	\Session::flash('flash_message', 'Passenger has been deleted');
+    	return redirect()->back();
     }
 }

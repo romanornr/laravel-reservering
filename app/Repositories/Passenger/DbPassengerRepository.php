@@ -29,5 +29,4 @@ class DbPassengerRepository extends DbRepository implements PassengerRepository 
         							  'gender' => $request->get('gender'),
         							  'birthday' => $request->get('birthday')]);
     }
-
 }

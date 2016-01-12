@@ -25,12 +25,6 @@
       <li class="nav-item">
         <a class="nav-link" href="/customer">Customers</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
   </ul>
       
   <ul class="navbar-form pull-right">

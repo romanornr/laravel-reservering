@@ -59,6 +59,7 @@ class TravelrequestController extends Controller
         'aantal' => $request->get('aantal'),
         'vertrek' => $request->get('vertrek'),
         'terug' => $request->get('terug'),
+        'contact' => $request->get('contact'),
         'toelichting' => $request->get('toelichting')
         ]);
 

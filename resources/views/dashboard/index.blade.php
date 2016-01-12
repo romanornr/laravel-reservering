@@ -13,8 +13,8 @@
 @foreach ($aanvragen as $aanvraag)
       <div class="card card-block">
   <h4 class="card-title">{{ $aanvraag->customer->firstname}} {{ $aanvraag->customer->achternaam}} -> {{ $aanvraag->onderwerp}}</h4>
-  <h5 class="card-text">Bestemming: {{ $aanvraag->bestemming}}</h5>
-  <p class="card-text">Aangemaakt op: {{ $aanvraag->updated_at}}</p>
+  <h5 class="card-text">Destination: {{ $aanvraag->bestemming}}</h5>
+  <p class="card-text">Created: {{ $aanvraag->created_at->diffForHumans()}}</p>
 {!! Form::open([
             'method' => 'GET',
             'route' => ['travelrequest.show', $aanvraag->id],

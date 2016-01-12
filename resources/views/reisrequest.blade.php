@@ -40,23 +40,25 @@
 
 
     </div>
+ <div class="row">
     <div class="form-group">
         {!! Form::label('onderwerp', 'onderwerp:') !!}
         {!! Form::select('onderwerp', array('algemene info' => 'algemene info', 'Informatie aanvraag tickets' => 'Informatie aanvraag tickets', 'Informatie aanvraag tours' => 'Informatie aanvraag tours', 'Informatie aanvraag hotels' => 'Informatie aanvraag hotels'), null, ['class'=>'form-control']) !!}
     </div>
+    </div>
 
+<div class="row">
     <div class="form-group">
         {!! Form::label('bestemming', 'bestemming:') !!}
         {!! Form::text('bestemming',null,['class'=>'form-control']) !!}
     </div>
 
-
     <div class="form-group">
         {!! Form::label('aantal', 'aantal personen:') !!}
         {!! Form::text('aantal',null,['class'=>'form-control']) !!}
     </div>
-
-
+</div>
+<div class="row">
     <div class="form-group">
         {!! Form::label('vertrek', 'vertrek:') !!}
         {!! Form::input('date', 'vertrek', null, ['class' => 'form-control', 'placeholder' => 'Date']); !!}
@@ -65,6 +67,14 @@
     <div class="form-group">
         {!! Form::label('terug', 'terug:') !!}
         {!! Form::input('date', 'terug', null, ['class' => 'form-control', 'placeholder' => 'Date']); !!}
+    </div>
+    </div>
+
+     <div class="row">
+    <div class="form-group">
+        {!! Form::label('Contact', 'Contact opnemen:') !!}
+        {!! Form::select('contact', array('algemene info' => 'Via email', 'Telefonisch in de ochtend' => 'Telefonisch in de ochtend', 'Telefonisch in de middag' => 'Telefonisch in de middag', 'Telefonisch na kantoor tijd' => 'Telefonisch na kantoor tijd'), null, ['class'=>'form-control']) !!}
+    </div>
     </div>
 
 

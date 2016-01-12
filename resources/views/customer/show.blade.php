@@ -90,7 +90,6 @@
   </tbody>
 </table>
 
-{{$bookings->passenger}}
 <div class="card-footer text-muted">Passengers</div>
 <table class="table table-sm">
   <thead>
@@ -130,16 +129,18 @@
 
     </tr>
     @endforeach
-  </tbody>
-</table>
-
-{!! Form::open([
+    <th scope="row"></th>
+      <td>  {!! Form::open([
             'method' => 'GET',
             'route' => ['booking.passenger.create', $bookings->id],
             'style'=>'display:inline-block'
         ]) !!}
             {!! Form::submit('Add passenger', ['class' => 'btn btn-success-outline btn-sm']) !!}
         {!! Form::close() !!}
+        </td>
+      <td> 
+  </tbody>
+</table>
 <p></p>
 
 <div class="card-footer text-muted">Extra info</div>

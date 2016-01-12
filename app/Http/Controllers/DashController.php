@@ -18,11 +18,16 @@ class DashController extends Controller
     $this->middleware('auth');
 }
 
-	public function show()
+	public function index()
 	{
 		//with -> Laravel N+1 problem -> sql query
-		$aanvragen = Aanvragen::with('klant')->orderBy('id', 'asc')->get();
+		$aanvragen = Aanvragen::with('customer')->orderBy('id', 'asc')->get();
 		return view('dashboard.index',
 			compact('aanvragen'));
+	}
+
+	public function show($id)
+	{
+
 	}
 }

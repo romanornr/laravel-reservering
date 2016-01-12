@@ -14,12 +14,13 @@ Route::get('auth/login', ['as' => 'login', 'uses' =>'Auth\AuthController@getLogi
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', ['as'=>'logout', 'uses' => 'Auth\AuthController@getLogout']);
 # Dashboard
-Route::get('dashboard', ['as' => 'dashboard', 'uses' =>'DashController@show']);
+Route::resource('dashboard', 'DashController');
+Route::resource('travelrequest', 'TravelrequestController');
 //Route::resource('dashboard/klanten', 'KlantController');
 //Route::resource('dashboard/klanten.booking', 'BookingController');
 # klant
-//Route::get('aanvraag', ['as' => 'aanvraag', 'uses' => 'TravelrequestController@create']);
-//route::post('aanvraag/save', ['uses'=> 'TravelrequestController@store']);
+Route::get('aanvraag', ['as' => 'aanvraag', 'uses' => 'TravelrequestController@create']);
+route::post('aanvraag/save', ['uses'=> 'TravelrequestController@store']);
 
 #customer
 //grab specific customer by id

@@ -46,14 +46,14 @@
 
         <div class="form-group">
         {!! Form::label('housnumber', 'housnumber') !!}
-        {!! Form::text('housnumber',null,['class'=>'form-control']) !!}
+        {!! Form::text('housnumber',null,['class'=>'form-control','required' => 'required']) !!}
     </div>
 </div>
 
 <div class="row">
     <div class="form-group">
         {!! Form::label('zipcode', 'zipcode') !!}
-        {!! Form::text('zipcode',null,['class'=>'form-control','id'=> 'triggerfield']) !!}
+        {!! Form::text('zipcode',null,['class'=>'form-control','required' => 'required']) !!}
     </div>
 
     <div class="form-group">

@@ -5,33 +5,39 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
-      <h4>Aanvraag</h4>
+    <br>
+    <h5>Aanvraag reisinformatie</h5>
         {!! Form::open([
         'action' => 'TravelrequestController@store'
         ]) !!}
-
-    <div class="form-group">
-   		{!! Form::radio('geslacht', 'man',['class'=>'form-control']) !!} de heer
-		{!! Form::radio('geslacht', 'vrouw',['class'=>'form-control']) !!} mevrouw
-	</div>
-
+<p></p>
+<div class="form-group">
+<div class="form-inline">
+        {!! Form::radio('gender', 'male', false,['class'=>'radio']) !!} de heer
+        {!! Form::radio('gender', 'female', false,['class'=>'radio', 'display'=> 'female']) !!} mevrouw
+</div>
+</div>
+<div class="row">
     <div class="form-group">
         {!! Form::label('voornaam', 'voornaam:') !!}
-        {!! Form::text('voornaam',null,['class'=>'form-control','required' => 'required']) !!}
+        {!! Form::text('firstname',null,['class'=>'form-control','required' => 'required']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('achternaam', 'achternaam:') !!}
-        {!! Form::text('achternaam',null,['class'=>'form-control','required' => 'required']) !!}
+        {!! Form::label('lastname', 'achternaam:') !!}
+        {!! Form::text('lastname',null,['class'=>'form-control','required' => 'required']) !!}
     </div>
+</div>
 
-
+<div class="row">
     <div class="form-group">
         {!! Form::label('email', 'email:') !!}
         {!! Form::email('email',null,['class'=>'form-control','required' => 'required']) !!}
+    </div>
     <div class="form-group">
         {!! Form::label('telefoonnummer', 'telefoonnummer:') !!}
         {!! Form::text('telefoonnummer',null,['class'=>'form-control']) !!}
     </div>
+
 
     </div>
     <div class="form-group">
@@ -58,7 +64,7 @@
 
     <div class="form-group">
         {!! Form::label('terug', 'terug:') !!}
-        {!! Form::input('date', 'vertrek', null, ['class' => 'form-control', 'placeholder' => 'Date']); !!}
+        {!! Form::input('date', 'terug', null, ['class' => 'form-control', 'placeholder' => 'Date']); !!}
     </div>
 
 

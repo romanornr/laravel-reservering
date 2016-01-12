@@ -7,7 +7,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Aanvragen;
-use App\Klant;
+use App\Customer;
+use Auth;
 
 class TravelrequestController extends Controller
 {
@@ -39,12 +40,12 @@ class TravelrequestController extends Controller
      */
     public function store(Request $request)
     {
-        $klant = Klant::create([
-        'geslacht' => $request->get('geslacht'),
-        'voornaam' => $request->get('voornaam'),
-        'achternaam' => $request->get('achternaam'),
+        $customer = Customer::create([
+        'gender' => $request->get('gender'),
+        'firstname' => $request->get('firstname'),
+        'lastname' => $request->get('lastname'),
         'email' => $request->get('email'),
-        'telefoonnummer' => $request->get('telefoonnummer')
+        'phone' => $request->get('phone')
         ]);
         
         /*
@@ -61,8 +62,8 @@ class TravelrequestController extends Controller
         'toelichting' => $request->get('toelichting')
         ]);
 
-        $klant->aanvragen()->save($aanvragen);
-        \Session::flash('flash_message', 'Uw aanvraag is verzonden en er word zo snel mogelijk contact met u opgenomen!');
+        $customer->aanvragen()->save($aanvragen);
+        \Session::flash('flash_message', 'There is a new travel request!');
     }
 
     /**
@@ -73,7 +74,10 @@ class TravelrequestController extends Controller
      */
     public function show($id)
     {
-        //
+        $this->middleware('auth');
+        $aanvraag = Aanvragen::findOrFail($id);
+        return view('dashboard.show',
+            compact('aanvraag'));
     }
 
     /**
@@ -107,6 +111,7 @@ class TravelrequestController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->middleware('auth');
+        $aanvraag = Aanvragen::findOrFail($id)->delete();
     }
 }

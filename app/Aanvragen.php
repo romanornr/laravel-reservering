@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Aanvragen extends Model
 {
     protected $table = 'aanvragen';
-    protected $fillable = ['klant_id','onderwerp','bestemming','aantal','vertrek','terug','toelichting'];
+    protected $guarded = ['id'];
 
     //relatie
-    public function klant()
+    public function customer()
     {
-    	return $this->belongsTo('App\Klant','klant_id');
+    	return $this->belongsTo('App\Customer','customer_id');
     }
 }

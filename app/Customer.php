@@ -18,4 +18,9 @@ class Customer extends Model
     {
     	return $this->hasMany('App\Flight','id','id');
     }
+
+    public function aanvragen()
+        {
+            return $this->hasMany('App\Aanvragen', 'customer_id', 'id');
+        }
 }

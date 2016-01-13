@@ -146,7 +146,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //Repositories
-        'App\Repositories\RepositoryServiceProvider'
+        App\Repositories\RepositoryServiceProvider::class,
 
     ],
 

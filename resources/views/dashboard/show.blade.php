@@ -17,7 +17,7 @@
     <p class="card-text">vertrek datum: {{ $aanvraag->vertrek}}</p>
     <p class="card-text">retour datum: {{ $aanvraag->terug}}</p>
   <p class="card-text">aantal personen: {{ $aanvraag->aantal}}</p>
-  <p class="card-text">contact opnemen: {{ $aanvraag->aantal}}</p>
+  <p class="card-text">contact opnemen: {{ $aanvraag->contact}}</p>
   <p class="card-text">toelichting: {{ $aanvraag->toelichting}}</p>
   <p class="card-text">created: {{ $aanvraag->created_at->diffForHumans()}}</p>
 

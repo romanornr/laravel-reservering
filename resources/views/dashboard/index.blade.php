@@ -12,7 +12,7 @@
 
 @foreach ($aanvragen as $aanvraag)
       <div class="card card-block">
-  <h4 class="card-title">{{ $aanvraag->customer->firstname}} {{ $aanvraag->customer->achternaam}} -> {{ $aanvraag->onderwerp}}</h4>
+  <h4 class="card-title">{{ $aanvraag->customer->firstname}} {{ $aanvraag->customer->lastname}} : {{ $aanvraag->onderwerp}}</h4>
   <h5 class="card-text">Destination: {{ $aanvraag->bestemming}}</h5>
   <p class="card-text">Created: {{ $aanvraag->created_at->diffForHumans()}}</p>
 {!! Form::open([

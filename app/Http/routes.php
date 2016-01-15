@@ -16,20 +16,20 @@ Route::get('auth/logout', ['as'=>'logout', 'uses' => 'Auth\AuthController@getLog
 # Dashboard
 Route::resource('dashboard', 'DashController');
 Route::resource('travelrequest', 'TravelrequestController');
-//Route::resource('dashboard/klanten', 'KlantController');
-//Route::resource('dashboard/klanten.booking', 'BookingController');
-# klant
+
+
+#Request
 Route::get('aanvraag', ['as' => 'aanvraag', 'uses' => 'TravelrequestController@create']);
 route::post('aanvraag/save', ['uses'=> 'TravelrequestController@store']);
 
-#customer
-//grab specific customer by id
-//Route::get('customer/{customer}', function(App\Customer $customer) {
-//	return $customer;
-//});
+#Customer
 Route::resource('customer', 'CustomerController');
+
+#BookingDetails
 Route::resource('customer.flight', 'FlightController');
 Route::resource('booking.passenger', 'PassengerController');
+Route::resource('customer.flight.outbound', 'OutboundContoller');
+
 
 Route::get('/', function () {
     return view('welcome');

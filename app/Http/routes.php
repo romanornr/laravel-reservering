@@ -29,6 +29,7 @@ Route::resource('customer', 'CustomerController');
 Route::resource('customer.flight', 'FlightController');
 Route::resource('booking.passenger', 'PassengerController');
 Route::resource('customer.flight.outbound', 'OutboundContoller');
+Route::resource('booking.cost', 'CostController');
 
 
 Route::get('/', function () {

@@ -37,5 +37,11 @@ class RepositoryServiceProvider extends ServiceProvider {
             'App\Repositories\Outbound\DbOutboundRepository'
         );
 
+        $this->app->bind(
+            'App\Repositories\Cost\CostRepository', 
+            'App\Repositories\Cost\DbCostRepository'
+        );
+
+
     }
 }

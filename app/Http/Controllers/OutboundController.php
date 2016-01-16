@@ -6,9 +6,24 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Repositories\Booking\BookingRepository;
+use App\Repositories\Flight\FlightRepository as Flight;
+use Auth;
 
 class OutboundController extends Controller
 {
+
+    /**
+     * @var OutboundRepository
+     */
+    private $booking;
+    private $flight;
+    public function __construct(Flight $flight)
+    {
+        $this->middleware('auth');
+        $this->flight = $flight;
+    } 
+
     /**
      * Display a listing of the resource.
      *
@@ -24,9 +39,10 @@ class OutboundController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $flight = $this->flight->getById($id);
+        return view('booking.outbound.create',compact('flight'));
     }
 
     /**

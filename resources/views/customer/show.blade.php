@@ -69,6 +69,7 @@
     </tr>
   </thead>
   <tbody>
+  
     <tr>
       <th scope="row">1</th>
       <td>Mark</td>
@@ -76,19 +77,21 @@
       <td>{{$bookings->flight->departure}}</td>
     </tr>
     <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+       <th scope="row">
+         {!! Form::open([
+            'method' => 'GET',
+            'route' => ['flight.outbound.create', $bookings->flight_id],
+            'style'=>'display:inline-block'
+        ]) !!}
+            {!! Form::submit('Add flight', ['class' => 'btn btn-info-outline btn-sm']) !!}
+        {!! Form::close() !!}
+       </th>
+        </tr>
+    
   </tbody>
+  </table>
 </table>
+
 
 <div class="card-footer text-muted">Passengers</div>
 <table class="table table-sm">

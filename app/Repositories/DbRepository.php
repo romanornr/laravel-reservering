@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Repositories;
-use App\Booking;
 
 abstract class DbRepository {
 

@@ -14,12 +14,15 @@ class CreateoutboundTable extends Migration
     {
         Schema::create('outbound', function (Blueprint $table){
             $table->increments('id');
+            $table->integer('flight_id')->unsigned();
             $table->string('flight_number', 30);
             $table->string('departure', 150);
             $table->string('arrival', 150);
             $table->dateTime('departure_time');
             $table->dateTime('arrival_time');
             $table->boolean('is_return')->nullable();
+
+            $table->foreign('flight_id')->references('id')->on('flight')->onDelete('cascade');
         });
     }
 

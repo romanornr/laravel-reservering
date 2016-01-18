@@ -36,7 +36,7 @@
 
       <div class="form-group">
         {!! Form::label('arrival_time', 'arrival time:') !!}
-        {!! Form::input('date', 'arrival_time', null, ['class' => 'form-control', 'placeholder' => 'Date']); !!}
+        {!! Form::input('datetime-local', 'arrival_time', null, ['class' => 'form-control', 'placeholder' => 'Date']); !!}
     </div>
 
 </div>

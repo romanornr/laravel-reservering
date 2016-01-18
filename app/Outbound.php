@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Outbound extends Model
 {
     protected $table = 'outbound';
-    protected $guarded = 'id';
+    protected $guarded = ['id'];
     public $timestamps = false;
 
     public function flight()

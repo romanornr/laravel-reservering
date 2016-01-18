@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Repositories\Booking\BookingRepository;
+use App\Repositories\Outbound\OutboundRepository;
 use App\Repositories\Flight\FlightRepository as Flight;
 use Auth;
 
@@ -16,11 +16,12 @@ class OutboundController extends Controller
     /**
      * @var OutboundRepository
      */
-    private $booking;
+    public $outbound;
     private $flight;
-    public function __construct(Flight $flight)
+    public function __construct(Flight $flight, OutboundRepository $outbound)
     {
         $this->middleware('auth');
+        $this->outbound = $outbound;
         $this->flight = $flight;
     } 
 
@@ -51,9 +52,11 @@ class OutboundController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $outbound = $this->outbound->addBookingDetail($request, $id);
+        \Session::flash('flash_message', 'Flight has been added !');
+        return redirect()->back();
     }
 
     /**

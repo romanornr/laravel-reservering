@@ -7,7 +7,7 @@
 <div class="container">
   <br></br>     
 {!! Form::open([
-        'route'=>['booking.flight.outbound.store', $booking->id, $flight->id]
+        'route'=>['booking.flight.outbound.store', $booking->id, $booking->flight_id]
         ]) !!}
 
 <div class="row">

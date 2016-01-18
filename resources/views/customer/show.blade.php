@@ -80,7 +80,7 @@
        <th scope="row">
          {!! Form::open([
             'method' => 'GET',
-            'route' => ['flight.outbound.create', $bookings->flight_id],
+            'route' => ['booking.flight.outbound.create', $bookings->id, $bookings->flight_id],
             'style'=>'display:inline-block'
         ]) !!}
             {!! Form::submit('Add flight', ['class' => 'btn btn-info-outline btn-sm']) !!}

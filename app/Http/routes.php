@@ -28,7 +28,7 @@ Route::resource('customer', 'CustomerController');
 #BookingDetails
 Route::resource('customer.flight', 'FlightController');
 Route::resource('booking.passenger', 'PassengerController');
-Route::resource('flight.outbound', 'OutboundController');
+Route::resource('booking.flight.outbound', 'OutboundController');
 //Route::resource('booking.cost', 'CostController');
 
 

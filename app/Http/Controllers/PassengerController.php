@@ -53,8 +53,7 @@ class PassengerController extends Controller
      */
     public function store(Request $request, $id)
     {
-    	$booking = $this->booking->getById($id);
-    	$customer = $booking->customer_id;
+    	$customer = $this->booking->getById($id)->customer_id;
         $passenger = $this->passenger->addBookingDetail($request, $id);
         \Session::flash('flash_message', 'New passenger has been created');
         return redirect()->action('CustomerController@show', [$customer]);

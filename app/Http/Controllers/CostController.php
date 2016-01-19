@@ -6,9 +6,22 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Repositories\Cost\CostRepository;
+use App\Repositories\Booking\BookingRepository as Booking;
 
-class CostContoller extends Controller
+class CostController extends Controller
 {
+    /**
+     * @var CostRepository
+     */
+    private $cost;
+    public function __construct(CostRepository $cost, Booking $booking)
+    {
+        $this->middleware('auth');
+        $this->cost = $cost;
+        $this->booking = $booking;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,9 +37,10 @@ class CostContoller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $booking = $this->booking->getById($id);
+        return view('booking.cost.create',compact('booking'));
     }
 
     /**

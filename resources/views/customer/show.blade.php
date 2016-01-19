@@ -75,6 +75,7 @@
   </thead>
   <tbody>
 @foreach($bookings->outbound as $outbounds)
+    @if( $outbounds->is_return < 1)
     <tr>
       <th scope="row">{{$outbounds->flight_number}}</th>
       <td> {{$outbounds->departure}}        </td>
@@ -90,6 +91,7 @@
         {!! Form::close() !!}
         </td>
     </tr>
+    @endif
 @endforeach
     <tr>
        <th scope="row">
@@ -160,6 +162,16 @@
   </tbody>
 </table>
 <p></p>
+
+<div class="card-footer text-muted">Extra info</div>
+<div class="card-block">
+cost
+{!! Form::open(['method' => 'GET',
+                'route' => ['booking.cost.create', $bookings->id],
+                'style'=>'display:inline-block']) !!}
+                {!! Form::submit('Add cost', ['class' => 'btn btn-success-outline btn-sm']) !!}
+{!! Form::close() !!}
+</div>
 
 <div class="card-footer text-muted">Extra info</div>
 <div class="card-block">

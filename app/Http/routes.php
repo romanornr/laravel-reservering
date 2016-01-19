@@ -11,6 +11,7 @@
 */
 // Authentication routes
 date_default_timezone_set('Europe/Amsterdam');
+setlocale(LC_MONETARY, 'nl_NL.UTF-8');
 
 Route::get('auth/login', ['as' => 'login', 'uses' =>'Auth\AuthController@getLogin']);
 Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -31,7 +32,7 @@ Route::resource('customer', 'CustomerController');
 Route::resource('customer.flight', 'FlightController');
 Route::resource('booking.passenger', 'PassengerController');
 Route::resource('booking.flight.outbound', 'OutboundController');
-//Route::resource('booking.cost', 'CostController');
+Route::resource('booking.cost', 'CostController');
 
 
 Route::get('/', function () {

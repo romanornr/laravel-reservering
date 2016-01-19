@@ -22,7 +22,7 @@ class CreateoutboundTable extends Migration
             $table->dateTime('arrival_time');
             $table->boolean('is_return')->nullable();
 
-            $table->foreign('flight_id')->references('id')->on('flight')->onDelete('cascade');
+            $table->foreign('flight_id')->references('id')->on('booking')->onDelete('cascade');
         });
     }
 

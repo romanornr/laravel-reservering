@@ -31,7 +31,7 @@ class Booking extends Model
 
     public function outbound()
     {
-        return $this->hasManyThrough('App\Outbound', 'App\Flight','id','flight_id');
+        return $this->hasMany('App\Outbound', 'flight_id');
     }
 
 }

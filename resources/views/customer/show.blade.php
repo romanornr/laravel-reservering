@@ -58,7 +58,7 @@
 @foreach ($booking as $bookings)
 <div class="card">
   <div class="card-header">
-    <b> {{ $bookings->id }} Outbound: {{$bookings->flight->arrival}} to {{$bookings->flight->departure}}</b>
+    <b> {{ $bookings->id }} {{$bookings->flight_id}} Outbound: {{$bookings->flight->arrival}} to {{$bookings->flight->departure}}</b>
   </div>
 
 <table class="table">
@@ -69,6 +69,7 @@
       <th>Time</th>
       <th>Arrives</th>
       <th>Time</th>
+      <th>Edit/Delete</th>
 
     </tr>
   </thead>
@@ -80,6 +81,14 @@
       <td> {{$outbounds->departure_time}}   </td>
       <td> {{$outbounds->arrival}}          </td>
       <td> {{$outbounds->arrival_time}}     </td>
+      <td> {!! Form::open([
+            'method' => 'DELETE',
+            'route' => ['booking.flight.outbound.destroy', $outbounds->id, $bookings->id, $bookings->flight_id],
+            'style'=>'display:inline-block'
+        ]) !!}
+            {!! Form::submit('Delete flight', ['class' => 'btn btn-danger-outline btn-sm']) !!}
+        {!! Form::close() !!}
+        </td>
     </tr>
 @endforeach
     <tr>

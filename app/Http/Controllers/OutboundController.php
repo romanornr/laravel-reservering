@@ -17,7 +17,7 @@ class OutboundController extends Controller
      * @var OutboundRepository
      */
     private $outbound;
-    private $flight;
+    private $booking;
     public function __construct(OutboundRepository $outbound, Booking $booking)
     {
         $this->middleware('auth');
@@ -103,6 +103,8 @@ class OutboundController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->outbound->deleteByid($id);
+     	\Session::flash('flash_message', 'Flight has been deleted');
+     	return redirect()->back();
     }
 }

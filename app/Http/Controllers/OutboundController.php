@@ -16,7 +16,7 @@ class OutboundController extends Controller
     /**
      * @var OutboundRepository
      */
-    public $outbound;
+    private $outbound;
     private $flight;
     public function __construct(OutboundRepository $outbound, Booking $booking)
     {

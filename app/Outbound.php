@@ -14,5 +14,6 @@ class Outbound extends Model
     {
     	return $this->belongsTo('App\Flight','flight_id','id');
     }
+
 }
 

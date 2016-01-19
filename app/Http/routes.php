@@ -9,7 +9,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-// Authentication routes 
+// Authentication routes
+date_default_timezone_set('Europe/Amsterdam');
+
 Route::get('auth/login', ['as' => 'login', 'uses' =>'Auth\AuthController@getLogin']);
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', ['as'=>'logout', 'uses' => 'Auth\AuthController@getLogout']);
@@ -33,5 +35,6 @@ Route::resource('booking.flight.outbound', 'OutboundController');
 
 
 Route::get('/', function () {
+	return redirect()->action('DashController@index');
     return view('welcome');
 });

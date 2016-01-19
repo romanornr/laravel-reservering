@@ -20,7 +20,7 @@ class DbBookingRepository extends DbRepository implements BookingRepository {
 
 	public function getBooking($id)
 	{
-		return $this->model->where('customer_id', $id)->orderBy('id' ,'desc')->with('flight','passenger')->get();
+		return $this->model->where('customer_id', $id)->orderBy('id' ,'desc')->with('flight','passenger','outbound')->get();
 	}
 
 }

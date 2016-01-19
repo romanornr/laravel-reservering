@@ -51,6 +51,7 @@
     </div>
 <br></br>
 
+
 @if( !$booking->count())
     This customer has no bookings
 @else
@@ -59,23 +60,28 @@
   <div class="card-header">
     <b> {{ $bookings->id }} Outbound: {{$bookings->flight->arrival}} to {{$bookings->flight->departure}}</b>
   </div>
+
 <table class="table">
   <thead class="thead-inverse">
     <tr>
-      <th>Flight</th>
-      <th>Arrives</th>
+      <th>Flight number</th>
       <th>Departs</th>
-      <th></th>
+      <th>Time</th>
+      <th>Arrives</th>
+      <th>Time</th>
+
     </tr>
   </thead>
   <tbody>
-  
+@foreach($bookings->outbound as $outbounds)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>{{$bookings->flight->arrival}}</td>
-      <td>{{$bookings->flight->departure}}</td>
+      <th scope="row">{{$outbounds->flight_number}}</th>
+      <td> {{$outbounds->departure}}        </td>
+      <td> {{$outbounds->departure_time}}   </td>
+      <td> {{$outbounds->arrival}}          </td>
+      <td> {{$outbounds->arrival_time}}     </td>
     </tr>
+@endforeach
     <tr>
        <th scope="row">
          {!! Form::open([
@@ -136,10 +142,10 @@
       <td>  {!! Form::open([
             'method' => 'GET',
             'route' => ['booking.passenger.create', $bookings->id],
-            'style'=>'display:inline-block'
-        ]) !!}
+            'style'=>'display:inline-block']) !!}
+
             {!! Form::submit('Add passenger', ['class' => 'btn btn-success-outline btn-sm']) !!}
-        {!! Form::close() !!}
+            {!! Form::close() !!}
         </td>
       <td> 
   </tbody>

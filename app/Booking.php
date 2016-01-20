@@ -26,7 +26,7 @@ class Booking extends Model
 
     public function Cost()
     {
-    	return $this->hasOne('App\Cost','cost_id');
+    	return $this->hasOne('App\Cost','id','cost_id');
     }
 
     public function outbound()

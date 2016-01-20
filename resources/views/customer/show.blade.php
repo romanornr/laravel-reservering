@@ -163,14 +163,30 @@
 </table>
 <p></p>
 
-<div class="card-footer text-muted">Extra info</div>
-<div class="card-block">
-cost
+
+<div class="card-footer text-muted">Cost</div>
+<div class="card-block">@if( !is_null($bookings->cost_id))
+<p class="card-text"> Reservation: € {{$bookings->cost->reservation}} &nbsp &nbsp land arrangment: € {{$bookings->cost->reservation}} 
+&nbsp &nbsp travel insurrance: € {{$bookings->cost->travel_insurrance}} 
+&nbsp &nbsp cancelation_insurrance: € {{$bookings->cost->travel_cancelation_insurrance}}
+&nbsp &nbsp Tax: € {{$bookings->cost->tax}}
+&nbsp &nbsp fee: € {{$bookings->cost->fee}}
+&nbsp &nbsp fare: € {{$bookings->cost->fare}}
+&nbsp &nbsp discount: € {{$bookings->cost->discount}}
+</p>
+<p class="card-text">@if ($bookings->cost->paid = 0)
+status: <font face="verdana" color="green">Paid </font></p>
+@else
+status: <font face="verdana" color="red">Not paid</font></p>
+@endif
+@else
 {!! Form::open(['method' => 'GET',
                 'route' => ['booking.cost.create', $bookings->id],
                 'style'=>'display:inline-block']) !!}
                 {!! Form::submit('Add cost', ['class' => 'btn btn-success-outline btn-sm']) !!}
 {!! Form::close() !!}
+@endif
+
 </div>
 
 <div class="card-footer text-muted">Extra info</div>

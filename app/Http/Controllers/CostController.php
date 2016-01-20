@@ -49,9 +49,13 @@ class CostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+    	$customer = $this->booking->getById($id)->customer_id;
+        $this->cost->addBookingDetail($request, $id);
+
+        \Session::flash('flash_message', 'Cost has been added');
+        return redirect()->action('CustomerController@show', [$customer]);
     }
 
     /**

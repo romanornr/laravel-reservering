@@ -7,7 +7,7 @@
 <div class="container">
   <br></br>     
 {!! Form::open([
-        'route'=>['customer.flight.store',$booking->id]
+        'route'=>['booking.cost.store',$booking->id]
         ]) !!}
 
   <div class="input-group">
@@ -23,9 +23,15 @@
   <span class="input-group-addon"></span>
  </div>
 
+   <div class="input-group">
+  <span class="input-group-addon">€</span>
+        {!! Form::number('travel_insurance',null,['class'=>'form-control','required' => 'required', 'step' => '0.01', 'placeholder' =>"travel insurance"]) !!}
+  <span class="input-group-addon"></span>
+ </div>
+
 <div class="input-group">
   <span class="input-group-addon">€</span>
-        {!! Form::number('travel_cancelation_insurrance',null,['class'=>'form-control','required' => 'required', 'step' => '0.01', 'placeholder' =>"travel cancelation insurrance cost"]) !!}
+        {!! Form::number('travel_cancelation_insurance',null,['class'=>'form-control','required' => 'required', 'step' => '0.01', 'placeholder' =>"travel cancelation insurance cost"]) !!}
   <span class="input-group-addon"></span>
  </div>
 
@@ -46,6 +52,13 @@
         {!! Form::number('discount',null,['class'=>'form-control','required' => 'required', 'step' => '0.01', 'placeholder' =>"discount"]) !!}
   <span class="input-group-addon"></span>
  </div>
+
+<br></br>
+
+  <label class="c-input c-radio">
+        {!! Form::radio('paid', '0', false,['class'=>'radio']) !!} <span class="c-indicator"></span>Not paid</label>
+  <label class="c-input c-radio">
+        {!! Form::radio('paid', '1', false,['class'=>'radio']) !!} <span class="c-indicator"></span>Paid</label>
 
 <br></br>
     <div class="form-group">

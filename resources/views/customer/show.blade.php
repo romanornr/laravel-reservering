@@ -58,7 +58,7 @@
 @foreach ($booking as $bookings)
 <div class="card">
   <div class="card-header">
-    <b> {{ $bookings->id }} {{$bookings->flight_id}} Outbound: {{$bookings->flight->arrival}} to {{$bookings->flight->departure}}</b>
+    <b> {{ $bookings->id }}{{$bookings->flight_id}} Outbound: {{$bookings->flight->arrival}} to {{$bookings->flight->departure}}</b>
   </div>
 
 <table class="table">
@@ -75,7 +75,7 @@
   </thead>
   <tbody>
 @foreach($bookings->outbound as $outbounds)
-    @if( $outbounds->is_return < 1)
+    @if( $outbounds->is_return == 0)
     <tr>
       <th scope="row">{{$outbounds->flight_number}}</th>
       <td> {{$outbounds->departure}}        </td>
@@ -108,7 +108,40 @@
   </tbody>
   </table>
 </table>
-
+@if( $outbounds->is_return == 1)
+<table class="table">
+  <thead class="thead-default">
+    <tr>
+      <th>Flight number</th>
+      <th>Departs</th>
+      <th>Time</th>
+      <th>Arrives</th>
+      <th>Time</th>
+      <th>Edit/Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($bookings->outbound as $outbounds)
+    @if( $outbounds->is_return == 1)
+    <tr>
+      <th scope="row">{{$outbounds->flight_number}}</th>
+      <td> {{$outbounds->departure}}        </td>
+      <td> {{$outbounds->departure_time}}   </td>
+      <td> {{$outbounds->arrival}}          </td>
+      <td> {{$outbounds->arrival_time}}     </td>
+      <td> {!! Form::open([
+            'method' => 'DELETE',
+            'route' => ['booking.flight.outbound.destroy', $outbounds->id, $bookings->id, $bookings->flight_id],
+            'style'=>'display:inline-block'
+        ]) !!}
+            {!! Form::submit('Delete flight', ['class' => 'btn btn-danger-outline btn-sm']) !!}
+        {!! Form::close() !!}
+        </td>
+        </tr>
+        @endif
+        @endforeach
+        @endif
+    </tbody></table>
 
 <div class="card-footer text-muted">Passengers</div>
 <table class="table table-sm">
@@ -174,7 +207,7 @@
 &nbsp &nbsp fare: € {{$bookings->cost->fare}}
 &nbsp &nbsp discount: € {{$bookings->cost->discount}}
 </p>
-<p class="card-text">@if ($bookings->cost->paid = 0)
+<p class="card-text">@if ($bookings->cost->paid == 0)
 status: <font face="verdana" color="green">Paid </font></p>
 @else
 status: <font face="verdana" color="red">Not paid</font></p>

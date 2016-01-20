@@ -108,7 +108,9 @@
   </tbody>
   </table>
 </table>
-@if( $outbounds->is_return == 1)
+
+@foreach($bookings->outbound as $outbounds)
+    @if( $outbounds->is_return == 0)
 <table class="table">
   <thead class="thead-default">
     <tr>
@@ -141,6 +143,7 @@
         @endif
         @endforeach
         @endif
+        @endforeach
     </tbody></table>
 
 <div class="card-footer text-muted">Passengers</div>

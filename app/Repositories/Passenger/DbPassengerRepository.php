@@ -19,6 +19,12 @@ class DbPassengerRepository extends DbRepository implements PassengerRepository 
 		$this->model = $model;
 	}
 
+	/**
+ 	* Find the booking id and create a passenger.
+ 	* Relation: Booking has many passengers
+ 	* @param $request [Request all user input]
+ 	* @param $id      [get booking id]
+ 	*/
 	public function addBookingDetail($request, $id)
     {
         $booking = Booking::find($id);

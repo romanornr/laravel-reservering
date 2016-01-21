@@ -43,6 +43,12 @@
 
 <div class="input-group">
   <span class="input-group-addon">€</span>
+        {!! Form::number('fee',null,['class'=>'form-control','required' => 'required', 'step' => '0.01', 'placeholder' =>"fee cost"]) !!}
+  <span class="input-group-addon"></span>
+ </div>
+
+<div class="input-group">
+  <span class="input-group-addon">€</span>
         {!! Form::number('fare',null,['class'=>'form-control','required' => 'required', 'step' => '0.01', 'placeholder' =>"fare cost"]) !!}
   <span class="input-group-addon"></span>
  </div>

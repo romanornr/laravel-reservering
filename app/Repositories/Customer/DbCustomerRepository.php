@@ -18,4 +18,14 @@ class DbCustomerRepository extends DbRepository implements CustomerRepository {
 		$this->model = $model;
 	}
 
+	 public function search($query) {
+
+        // Sets the parameters from the get request to the variables.
+       
+       return $this->model->where('lastname','LIKE',"%$query%")
+       		->orWhere('firstname','LIKE',"%$query%")
+       		->orWhere('zipcode','LIKE',"%$query%")
+       		->orderBy('id', 'desc')
+       		->paginate(2);
+	}
 }

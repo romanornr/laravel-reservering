@@ -58,7 +58,7 @@
 @foreach ($booking as $bookings)
 <div class="card">
   <div class="card-header">
-    <b> {{ $bookings->id }}{{$bookings->flight_id}} Outbound: {{$bookings->flight->arrival}} to {{$bookings->flight->departure}}</b>
+    <b> {{ $bookings->id }}{{$bookings->flight_id}} Outbound: {{$bookings->flight->departure}} to {{$bookings->flight->arrival}}</b>
   </div>
 
 <table class="table">
@@ -109,8 +109,6 @@
   </table>
 </table>
 
-@foreach($bookings->outbound as $outbounds)
-    @if( $outbounds->is_return == 0)
 <table class="table">
   <thead class="thead-default">
     <tr>
@@ -140,8 +138,6 @@
         {!! Form::close() !!}
         </td>
         </tr>
-        @endif
-        @endforeach
         @endif
         @endforeach
     </tbody></table>
@@ -210,7 +206,7 @@
 &nbsp &nbsp fare: € {{$bookings->cost->fare}}
 &nbsp &nbsp discount: € {{$bookings->cost->discount}}
 </p>
-<p class="card-text">@if ($bookings->cost->paid == 0)
+<p class="card-text">@if ($bookings->cost->paid == 1)
 status: <font face="verdana" color="green">Paid </font></p>
 @else
 status: <font face="verdana" color="red">Not paid</font></p>

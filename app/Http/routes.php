@@ -10,6 +10,8 @@
 |
 */
 // Authentication routes
+Use App\Customer;
+
 date_default_timezone_set('Europe/Amsterdam');
 setlocale(LC_MONETARY, 'nl_NL.UTF-8');
 
@@ -27,6 +29,17 @@ route::post('aanvraag/save', ['uses'=> 'TravelrequestController@store']);
 
 #Customer
 Route::resource('customer', 'CustomerController');
+Route::get('customer', function()
+{
+	$query = Request::get('q');
+	$Repository = App::make('App\Repositories\Customer\DbCustomerRepository');
+		$customer = $query
+			? $Repository->search($query)
+			: $Repository->getAll();
+
+	return View::make('customer.index')->withCustomer($customer);
+});
+
 
 #BookingDetails
 Route::resource('customer.flight', 'FlightController');

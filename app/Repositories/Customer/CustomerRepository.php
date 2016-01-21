@@ -43,4 +43,5 @@ interface CustomerRepository {
      */
      public function updateRecord($request, $id);
 
+     public function search($query);
 }

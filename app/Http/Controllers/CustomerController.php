@@ -30,9 +30,10 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $customer = $this->customer->getAll();
+        
         return view('customer.index', compact('customer')); 
     }
 
@@ -111,4 +112,5 @@ class CustomerController extends Controller
         \Session::flash('flash_message', 'De klant is verwijderd uit de database!');
         return redirect('customer');
     }
+
 }

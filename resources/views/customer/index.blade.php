@@ -1,14 +1,22 @@
 @extends('layouts.master')
 
 @section('content')
-
 <div class="container">
   <br></br>   
-<h4>Create customer</h4> 
+<h4>Customers</h4> 
       <p></p>
       <a href="customer/create" type="button" class="btn btn-success">Create customer</a></button>
 <table class="table table-bordered">
 <p></p>
+
+<div id="custom-search-input">
+<div class="input-group col-md-12">
+{{ Form::open(['method' => 'GET']) }}
+{{ Form::input('search', 'q', null, ['class'=>'form-control','placeholder' => 'Search...'])}}
+{{ Form::close() }}
+</div></div>
+
+<table class="table" id="table">
   <thead>
     <tr>
       <th>id</th>
@@ -42,4 +50,6 @@
 
 </div>
 
+
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 @endsection

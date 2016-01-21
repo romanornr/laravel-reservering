@@ -7,14 +7,14 @@
       <p></p>
       <a href="customer/create" type="button" class="btn btn-success">Create customer</a></button>
 <table class="table table-bordered">
-<p></p>
-
+<br></br>
 <div id="custom-search-input">
 <div class="input-group col-md-12">
 {{ Form::open(['method' => 'GET']) }}
 {{ Form::input('search', 'q', null, ['class'=>'form-control','placeholder' => 'Search...'])}}
 {{ Form::close() }}
 </div></div>
+</table>
 
 <table class="table" id="table">
   <thead>

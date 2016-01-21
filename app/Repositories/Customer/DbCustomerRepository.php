@@ -25,7 +25,8 @@ class DbCustomerRepository extends DbRepository implements CustomerRepository {
        return $this->model->where('lastname','LIKE',"%$query%")
        		->orWhere('firstname','LIKE',"%$query%")
        		->orWhere('zipcode','LIKE',"%$query%")
+       		->orWhere('email', 'LIKE',"%$query%")
        		->orderBy('id', 'desc')
-       		->paginate(2);
+       		->paginate(20);
 	}
 }

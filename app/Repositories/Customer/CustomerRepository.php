@@ -43,5 +43,11 @@ interface CustomerRepository {
      */
      public function updateRecord($request, $id);
 
+     /**
+      * Find customer by their firstname
+      * or lastname or zipcode, or email or id
+      * @param  $query [user search input]
+      * @return array  [get 20 search results per page]
+      */
      public function search($query);
 }

@@ -18,10 +18,14 @@ class DbCustomerRepository extends DbRepository implements CustomerRepository {
 		$this->model = $model;
 	}
 
+	/**
+	 * Find customer by their firstname
+	 * or lastname or zipcode, or email or id
+	 * @param  $query [user search input]
+	 * @return array  [get 20 search results per page]
+	 */
 	 public function search($query) {
-
-        // Sets the parameters from the get request to the variables.
-       
+     
        return $this->model->where('lastname','LIKE',"%$query%")
        		->orWhere('firstname','LIKE',"%$query%")
        		->orWhere('zipcode','LIKE',"%$query%")

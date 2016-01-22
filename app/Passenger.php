@@ -26,7 +26,7 @@ class Passenger extends Model
 
     /**
      * belongsTo relational mapping. 
-     * belgsTo Booking
+     * belongsTo Booking
      * @return mixed
      */
     public function booking()
@@ -36,7 +36,7 @@ class Passenger extends Model
 
      /**
      * belongsTo relational mapping. 
-     * belgsTo customer
+     * belongsTo customer
      * @return mixed
      */
     public function customer()

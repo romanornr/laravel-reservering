@@ -29,10 +29,11 @@ interface PassengerRepository {
 	public function deleteByid($id);
 
 	/**
- 	* Find the booking id and create a passenger.
- 	* Relation: Booking has many passengers
- 	* @param $request [Request all user input]
- 	* @param $id      [get booking id]
- 	*/
+	 * Request user input
+	 * create passenger
+	 * save belongsto relationship with Booking model
+	 * @param $request [request all user input]
+	 * @param $id      [get booking id]
+	 */
 	public function addBookingDetail($request, $id);
 }

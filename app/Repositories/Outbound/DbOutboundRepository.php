@@ -12,7 +12,13 @@ class DbOutboundRepository extends DbRepository implements OutboundRepository {
 	protected $model;
 
 	/**
+	 * @var $flight
+	 */
+	protected $flight
+
+	/**
 	*@param $model
+	*@param $flight
 	*/
 	function __construct(Outbound $model, Flight $flight)
 	{
@@ -20,17 +26,18 @@ class DbOutboundRepository extends DbRepository implements OutboundRepository {
 		$this->flight = $flight;
 	}
 
+	/**
+	 * request userinput and create an outbound
+	 * Save belongsTo relationship with Flight model
+	 * @param $request [request all user input]
+	 * @param $id      [get booking id]
+	 */
 	public function addBookingDetail($request, $id)
     {
         $flight = $this->flight->getById($id);
         $givenInput = $request->all();
-    	$data = $this->model->create(['flight_id' => $flight->id,
-    								  'flight_number' => $request->get('flight_number'),
-        							  'departure' => $request->get('departure'),
-        							  'arrival' => $request->get('arrival'),
-        							  'departure_time' => $request->get('departure_time'),
-        							  'arrival_time' => $request->get('arrival_time'),
-        							  'is_return' => $request->get('is_return')]);
+    	$data = $this->model->create($givenInput);
+    	$flight->outbound()->save($data);
     }
 
 }

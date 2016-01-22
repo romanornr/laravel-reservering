@@ -27,7 +27,7 @@ class Outbound extends Model
 
      /**
      * belongsTo relational mapping. 
-     * belgsTo booking
+     * belongsTo booking
      * @return mixed
      */
     public function booking()

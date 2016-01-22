@@ -14,7 +14,7 @@ class CreateoutboundTable extends Migration
     {
         Schema::create('outbound', function (Blueprint $table){
             $table->increments('id');
-            $table->integer('flight_id')->unsigned();
+            $table->integer('flight_id')->unsigned()->nullable();
             $table->string('flight_number', 30);
             $table->string('departure', 150);
             $table->string('arrival', 150);

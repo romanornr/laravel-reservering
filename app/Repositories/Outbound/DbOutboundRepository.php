@@ -14,7 +14,7 @@ class DbOutboundRepository extends DbRepository implements OutboundRepository {
 	/**
 	 * @var $flight
 	 */
-	protected $flight
+	protected $flight;
 
 	/**
 	*@param $model

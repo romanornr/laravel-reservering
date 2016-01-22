@@ -2,28 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Repositories\Outbound\OutboundRepository;
 use App\Repositories\Booking\BookingRepository as Booking;
+use App\Repositories\Outbound\OutboundRepository;
 use Auth;
+use Illuminate\Http\Request;
 
 class OutboundController extends Controller
 {
-
     /**
      * @var OutboundRepository
      */
     private $outbound;
     private $booking;
+
     public function __construct(OutboundRepository $outbound, Booking $booking)
     {
         $this->middleware('auth');
         $this->outbound = $outbound;
         $this->booking = $booking;
-    } 
+    }
 
     /**
      * Display a listing of the resource.
@@ -44,13 +41,15 @@ class OutboundController extends Controller
     {
         $booking = $this->booking->getById($id);
         $flight = $this->booking->getById($id)->flight_id;
-        return view('booking.outbound.create',compact('booking','flight'));
+
+        return view('booking.outbound.create', compact('booking', 'flight'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $id)
@@ -58,13 +57,15 @@ class OutboundController extends Controller
         $customer = $this->booking->getById($id)->customer_id;
         $outbound = $this->outbound->addBookingDetail($request, $id);
         \Session::flash('flash_message', 'Flight has been added !');
+
         return redirect()->action('CustomerController@show', [$customer]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -75,7 +76,8 @@ class OutboundController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -86,8 +88,9 @@ class OutboundController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -98,13 +101,15 @@ class OutboundController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $this->outbound->deleteByid($id);
-     	\Session::flash('flash_message', 'Flight has been deleted');
-     	return redirect()->back();
+        \Session::flash('flash_message', 'Flight has been deleted');
+
+        return redirect()->back();
     }
 }

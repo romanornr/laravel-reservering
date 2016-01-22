@@ -2,20 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
-use App\Repositories\Flight\FlightRepository;
-use App\Repositories\Customer\CustomerRepository;
 use App\Repositories\Booking\BookingRepository as Booking;
+use App\Repositories\Customer\CustomerRepository;
+use App\Repositories\Flight\FlightRepository;
 use Auth;
-
+use Illuminate\Http\Request;
 
 class FlightController extends Controller
 {
-
     /**
      * @var FlightRepository
      */
@@ -30,6 +24,7 @@ class FlightController extends Controller
      * @var Booking
      */
     private $booking;
+
     public function __construct(FlightRepository $flight, CustomerRepository $customer, Booking $booking)
     {
         $this->middleware('auth');
@@ -45,7 +40,6 @@ class FlightController extends Controller
      */
     public function index()
     {
-        
     }
 
     /**
@@ -56,27 +50,31 @@ class FlightController extends Controller
     public function create($id)
     {
         $customer = $this->customer->getById($id);
-        return view('booking.flight.create',compact('customer'));
+
+        return view('booking.flight.create', compact('customer'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $id)
     {
-       $customer = $this->customer->getById($id);
-       $flight = $this->flight->addBookingDetail($request, $id);
-       \Session::flash('flash_message', 'New flight has been created');
-       return redirect()->action('CustomerController@show', [$customer]);
+        $customer = $this->customer->getById($id);
+        $flight = $this->flight->addBookingDetail($request, $id);
+        \Session::flash('flash_message', 'New flight has been created');
+
+        return redirect()->action('CustomerController@show', [$customer]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -87,7 +85,8 @@ class FlightController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -98,8 +97,9 @@ class FlightController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -110,13 +110,15 @@ class FlightController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $this->booking->deleteByid($id);
         \Session::flash('flash_message', 'Booking has been deleted');
+
         return redirect()->back();
     }
 }

@@ -1,23 +1,25 @@
-<?php 
+<?php
+
 
 namespace App\Repositories\Outbound;
 
-interface OutboundRepository {
+interface OutboundRepository
+{
+    /**
+     * request userinput and create an outbound
+     * Save belongsTo relationship with Flight model.
+     *
+     * @param $request [request all user input]
+     * @param $id      [get booking id]
+     */
+    public function addBookingDetail($request, $id);
 
-	/**
-	 * request userinput and create an outbound
-	 * Save belongsTo relationship with Flight model
-	 * @param $request [request all user input]
-	 * @param $id      [get booking id]
-	 */
-	public function addBookingDetail($request, $id);
-
-	 /**
-     * Delete a record by id
+    /**
+     * Delete a record by id.
      *
      * @param $id
-     * @return mixed 
+     *
+     * @return mixed
      */
-	public function deleteByid($id);
-	
+    public function deleteByid($id);
 }

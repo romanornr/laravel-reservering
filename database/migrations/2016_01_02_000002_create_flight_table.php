@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateflightTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreateflightTable extends Migration
      */
     public function up()
     {
-        Schema::create('flight', function (Blueprint $table){
+        Schema::create('flight', function (Blueprint $table) {
             $table->increments('id');
             $table->string('departure', 150);
             $table->string('arrival', 150);

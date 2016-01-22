@@ -6,44 +6,47 @@ use Illuminate\Database\Eloquent\Model;
 
 class Outbound extends Model
 {
-     /**
-     * table from outbounds of the flight
-     * @var $table
+    /**
+     * table from outbounds of the flight.
+     *
+     * @var
      */
     protected $table = 'outbound';
 
     /**
      * guard id
-     * protection for mass assignment vulnerability
-     * @var $guarded
+     * protection for mass assignment vulnerability.
+     *
+     * @var
      */
     protected $guarded = ['id'];
 
     /**
-     * no timestamps for passengers
-     * @var $timestamps
+     * no timestamps for passengers.
+     *
+     * @var
      */
     public $timestamps = false;
 
-     /**
+    /**
      * belongsTo relational mapping. 
-     * belongsTo booking
+     * belongsTo booking.
+     *
      * @return mixed
      */
     public function booking()
     {
-    	return $this->belongsTo('App\Booking', 'id ');
+        return $this->belongsTo('App\Booking', 'id ');
     }
 
     /**
      * belongsTo relational mapping. 
-     * belongsTo flight
+     * belongsTo flight.
+     *
      * @return mixed
      */
     public function flight()
     {
-    	return $this->belongsTo('App\Flight','flight_id','id');
+        return $this->belongsTo('App\Flight', 'flight_id', 'id');
     }
-
 }
-

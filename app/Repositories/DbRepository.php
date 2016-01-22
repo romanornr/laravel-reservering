@@ -2,75 +2,80 @@
 
 namespace App\Repositories;
 
-abstract class DbRepository {
-
+abstract class DbRepository
+{
     /**
-     * Eloquent model
+     * Eloquent model.
      */
     protected $model;
+
     /**
      * @param $model
      */
-    function __construct($model)
+    public function __construct($model)
     {
-    	$this->model = $model;
+        $this->model = $model;
     }
 
-     /**
-     * Fetch a record by id
+    /**
+     * Fetch a record by id.
      *
      * @param $id
+     *
      * @return mixed
      */
-	public function getById($id)
-	{
-		return $this->model->find($id);
-	}
+    public function getById($id)
+    {
+        return $this->model->find($id);
+    }
 
-     /**
-     * Receive all records in order by creation date ascending
+    /**
+     * Receive all records in order by creation date ascending.
      *
      * @param $id
-     * @return mixed 
+     *
+     * @return mixed
      */
-	public function getAll()
-	{
-        return $this->model->orderBy('created_at' ,'desc')->paginate(5);
-	}
+    public function getAll()
+    {
+        return $this->model->orderBy('created_at', 'desc')->paginate(5);
+    }
 
-     /**
-     * Delete a record by id
+    /**
+     * Delete a record by id.
      *
      * @param $id
-     * @return mixed 
+     *
+     * @return mixed
      */
-	public function deleteByid($id)
-	{
-		return $this->model->find($id)->delete();
-	}
+    public function deleteByid($id)
+    {
+        return $this->model->find($id)->delete();
+    }
 
-     /**
-     * request all input and create new record
+    /**
+     * request all input and create new record.
      *
      * 
-     * @return mixed 
+     * @return mixed
      */
-	public function createNew($request)
-	{
-		$givenInput = $request->all();
-		return $this->model->create($givenInput);
-	}
+    public function createNew($request)
+    {
+        $givenInput = $request->all();
 
-     /**
-     * request all (new) input and save updated record
+        return $this->model->create($givenInput);
+    }
+
+    /**
+     * request all (new) input and save updated record.
      *
      * 
-     * @return mixed 
+     * @return mixed
      */
-	public function updateRecord($request, $id)
-	{
-		$newInput = $request->all();
-		return $this->model->find($id)->fill($newInput)->save();
-	}
-    
+    public function updateRecord($request, $id)
+    {
+        $newInput = $request->all();
+
+        return $this->model->find($id)->fill($newInput)->save();
+    }
 }

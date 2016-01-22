@@ -2,27 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Repositories\Customer\CustomerRepository;
 use App\Repositories\Booking\BookingRepository;
+use App\Repositories\Customer\CustomerRepository;
 use Auth;
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-
     /**
      * @var CustomerRepository
      */
     private $customer;
+
     public function __construct(CustomerRepository $customer, BookingRepository $booking)
     {
         $this->middleware('auth');
         $this->booking = $booking;
         $this->customer = $customer;
-
     }
 
     /**
@@ -33,8 +29,8 @@ class CustomerController extends Controller
     public function index(Request $request)
     {
         $customer = $this->customer->getAll();
-        
-        return view('customer.index', compact('customer')); 
+
+        return view('customer.index', compact('customer'));
     }
 
     /**
@@ -50,46 +46,53 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $customer = $this->customer->createNew($request);
         \Session::flash('flash_message', 'New customer has been created');
-         return redirect('customer');
+
+        return redirect('customer');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $customer = $this->customer->getById($id);
         $booking = $this->booking->getBooking($id);
-        return view('customer.show', compact('customer','booking'));
+
+        return view('customer.show', compact('customer', 'booking'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $customer = $this->customer->getById($id);
+
         return view('customer.edit', compact('customer'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update($id, Request $request)
@@ -97,20 +100,22 @@ class CustomerController extends Controller
         $this->customer->updateRecord($request, $id);
         $customer = $this->customer->getById($id);
         \Session::flash('flash_message', 'Customer record has been updated');
+
         return view('customer.show', compact('customer'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $this->customer->deleteById($id);
         \Session::flash('flash_message', 'De klant is verwijderd uit de database!');
+
         return redirect('customer');
     }
-
 }

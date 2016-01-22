@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Aanvragen;
 use App\Customer;
 use Auth;
+use Illuminate\Http\Request;
 
 class TravelrequestController extends Controller
 {
@@ -35,32 +32,33 @@ class TravelrequestController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $customer = Customer::create([
-        'gender' => $request->get('gender'),
+        'gender'    => $request->get('gender'),
         'firstname' => $request->get('firstname'),
-        'lastname' => $request->get('lastname'),
-        'email' => $request->get('email'),
-        'phone' => $request->get('phone')
+        'lastname'  => $request->get('lastname'),
+        'email'     => $request->get('email'),
+        'phone'     => $request->get('phone'),
         ]);
-        
+
         /*
             Geen Aanvragen::create
             maar new Aanvragen
         */
-            
+
         $aanvragen = new Aanvragen([
-        'onderwerp' => $request->get('onderwerp'),
-        'bestemming' => $request->get('bestemming'),
-        'aantal' => $request->get('aantal'),
-        'vertrek' => $request->get('vertrek'),
-        'terug' => $request->get('terug'),
-        'contact' => $request->get('contact'),
-        'toelichting' => $request->get('toelichting')
+        'onderwerp'   => $request->get('onderwerp'),
+        'bestemming'  => $request->get('bestemming'),
+        'aantal'      => $request->get('aantal'),
+        'vertrek'     => $request->get('vertrek'),
+        'terug'       => $request->get('terug'),
+        'contact'     => $request->get('contact'),
+        'toelichting' => $request->get('toelichting'),
         ]);
 
         $customer->aanvragen()->save($aanvragen);
@@ -70,13 +68,15 @@ class TravelrequestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $this->middleware('auth');
         $aanvraag = Aanvragen::findOrFail($id);
+
         return view('dashboard.show',
             compact('aanvraag'));
     }
@@ -84,7 +84,8 @@ class TravelrequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -95,8 +96,9 @@ class TravelrequestController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -107,7 +109,8 @@ class TravelrequestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

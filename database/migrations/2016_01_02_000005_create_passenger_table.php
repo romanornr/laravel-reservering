@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreatepassengerTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreatepassengerTable extends Migration
      */
     public function up()
     {
-        Schema::create('passenger', function (Blueprint $table){
+        Schema::create('passenger', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('booking_id')->unsigned();
             $table->string('firstname', 32);

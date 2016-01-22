@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreatecustomerTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreatecustomerTable extends Migration
      */
     public function up()
     {
-        Schema::create('customer', function (Blueprint $table){
+        Schema::create('customer', function (Blueprint $table) {
             $table->increments('id');
             $table->string('firstname', 32);
             $table->string('infix', 20)->nullable();

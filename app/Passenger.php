@@ -7,40 +7,45 @@ use Illuminate\Database\Eloquent\Model;
 class Passenger extends Model
 {
     /**
-     * table from passengers in the airplane
-     * @var $table
+     * table from passengers in the airplane.
+     *
+     * @var
      */
-	protected $table = 'passenger';
+    protected $table = 'passenger';
     /**
      * guard id
-     * protection for mass assignment vulnerability
-     * @var $guarded
+     * protection for mass assignment vulnerability.
+     *
+     * @var
      */
     protected $guarded = ['id'];
 
     /**
-     * no timestamps for passengers
-     * @var $timestamps
+     * no timestamps for passengers.
+     *
+     * @var
      */
     public $timestamps = false;
 
     /**
      * belongsTo relational mapping. 
-     * belongsTo Booking
+     * belongsTo Booking.
+     *
      * @return mixed
      */
     public function booking()
-    	{
-    		return $this->belongsTo('App\Booking','booking_id','id');
-    	}
+    {
+        return $this->belongsTo('App\Booking', 'booking_id', 'id');
+    }
 
-     /**
+    /**
      * belongsTo relational mapping. 
-     * belongsTo customer
+     * belongsTo customer.
+     *
      * @return mixed
      */
     public function customer()
     {
-    	return $this->belongsTo('App\Customer','id');
+        return $this->belongsTo('App\Customer', 'id');
     }
 }

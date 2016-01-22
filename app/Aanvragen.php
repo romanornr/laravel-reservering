@@ -10,8 +10,9 @@ class Aanvragen extends Model
     protected $guarded = ['id'];
 
     //relatie
+
     public function customer()
     {
-    	return $this->belongsTo('App\Customer','customer_id');
+        return $this->belongsTo('App\Customer', 'customer_id');
     }
 }

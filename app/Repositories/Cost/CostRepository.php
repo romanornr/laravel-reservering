@@ -12,4 +12,20 @@ interface CostRepository {
 	 */
 	public function addBookingDetail($request, $id);
 
+	/**
+    * Fetch a record by id
+    *
+    * @param $id
+    * @return mixed
+    */
+	public function getById($id);
+
+	/**
+    * request all (new) input and save updated record
+    *
+    * 
+    * @return mixed 
+    */
+	public function updateRecord($request, $id);
+
 }

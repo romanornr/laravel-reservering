@@ -29,7 +29,7 @@ class CostController extends Controller
      */
     public function index()
     {
-        //
+     //
     }
 
     /**
@@ -75,9 +75,11 @@ class CostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, $cost)
     {
-        //
+        $booking = $this->booking->getById($id);
+        $cost = $this->cost->getById($cost);
+        return view('booking.cost.edit', compact('booking','cost'));
     }
 
     /**
@@ -87,9 +89,14 @@ class CostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request, $cost)
     {
-        //
+       $booking = $this->booking->getById($id);
+       $this->cost->getById($cost);
+        $this->cost->updateRecord($request, $cost);
+        $customer = $booking->customer_id;
+       \Session::flash('flash_message', 'Cost record has been updated');
+       return redirect()->action('CustomerController@show', [$customer]);
     }
 
     /**

@@ -212,6 +212,14 @@
 &nbsp &nbsp fare: € {{$bookings->cost->fare}}
 &nbsp &nbsp discount: € {{$bookings->cost->discount}}
 </p>
+       {!! Form::open([
+            'method' => 'GET',
+            'route' => ['booking.cost.edit', $bookings->id ,$bookings->cost->id],
+            'style'=>'display:inline-block'
+        ]) !!}
+            {!! Form::submit('Update cost', ['class' => 'btn btn-success-outline btn-sm']) !!}
+        {!! Form::close() !!}
+        <p></p>
 <p class="card-text">@if ($bookings->cost->paid == 1)
 status: <font face="verdana" color="green">Paid </font></p>
 @else
@@ -223,6 +231,8 @@ status: <font face="verdana" color="red">Not paid</font></p>
                 'style'=>'display:inline-block']) !!}
                 {!! Form::submit('Add cost', ['class' => 'btn btn-success-outline btn-sm']) !!}
 {!! Form::close() !!}
+
+
 @endif
 
 </div>

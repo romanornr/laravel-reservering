@@ -12,7 +12,13 @@ class DbCostRepository extends DbRepository implements CostRepository {
 	protected $model;
 
 	/**
+	 * @var Booking
+	 */
+	protected $booking;
+
+	/**
 	*@param Cost $model
+	*@param Booking $booking
 	*/
 	function __construct(Cost $model, Booking $booking)
 	{
@@ -20,6 +26,12 @@ class DbCostRepository extends DbRepository implements CostRepository {
 		$this->booking = $booking;
 	}
 
+	/**
+	 * Add all the cost for the booking
+	 * Save belongsTo relationship with Booking model
+	 * @param $request [get user input]
+	 * @param $id      [get booking id]
+	 */
 	public function addBookingDetail($request, $id)
 	{
 		$booking = $this->booking->getById($id);

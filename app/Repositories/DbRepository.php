@@ -22,7 +22,6 @@ abstract class DbRepository {
      * @param $id
      * @return mixed
      */
-
 	public function getById($id)
 	{
 		return $this->model->find($id);
@@ -34,7 +33,6 @@ abstract class DbRepository {
      * @param $id
      * @return mixed 
      */
-
 	public function getAll()
 	{
         return $this->model->orderBy('created_at' ,'desc')->paginate(5);
@@ -62,7 +60,6 @@ abstract class DbRepository {
 		$givenInput = $request->all();
 		return $this->model->create($givenInput);
 	}
-
 
      /**
      * request all (new) input and save updated record

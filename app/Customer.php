@@ -13,7 +13,7 @@ class Customer extends Model
     protected $table = 'customer';
 
     /**
-     * guard id
+     * guard id, created_at and updated_at
      * protection for mass assignment vulnerability
      * @var $guarded
      */

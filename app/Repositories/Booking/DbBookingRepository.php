@@ -18,6 +18,13 @@ class DbBookingRepository extends DbRepository implements BookingRepository {
 		$this->model = $model;
 	}
 
+	/**
+	 * Eloquent Eager Loading to solve N + 1 query problem.
+	 * Get all bookings details via customer id
+	 * Receive all records in order by creation date ascending
+	 * @param  $id [customer id]
+	 * @return mixed [flight, passenger, outbound, cost]
+	 */
 	public function getBooking($id)
 	{
 		return $this->model->where('customer_id', $id)->orderBy('id' ,'desc')->with('flight','passenger','outbound','cost')->get();

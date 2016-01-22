@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Repositories\Flight\FlightRepository;
 use App\Repositories\Customer\CustomerRepository;
+use App\Repositories\Booking\BookingRepository as Booking;
 use Auth;
 
 
@@ -19,11 +20,22 @@ class FlightController extends Controller
      * @var FlightRepository
      */
     private $flight;
-    public function __construct(FlightRepository $flight, CustomerRepository $customer)
+
+    /**
+     * @var CustomerRepository
+     */
+    private $customer;
+
+    /**
+     * @var Booking
+     */
+    private $booking;
+    public function __construct(FlightRepository $flight, CustomerRepository $customer, Booking $booking)
     {
         $this->middleware('auth');
         $this->flight = $flight;
         $this->customer = $customer;
+        $this->booking = $booking;
     }
 
     /**
@@ -103,6 +115,8 @@ class FlightController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->booking->deleteByid($id);
+        \Session::flash('flash_message', 'Booking has been deleted');
+        return redirect()->back();
     }
 }

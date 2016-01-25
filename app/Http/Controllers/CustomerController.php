@@ -101,7 +101,7 @@ class CustomerController extends Controller
         $customer = $this->customer->getById($id);
         \Session::flash('flash_message', 'Customer record has been updated');
 
-        return view('customer.show', compact('customer'));
+        return redirect()->action('CustomerController@show', [$customer]);
     }
 
     /**

@@ -80,7 +80,7 @@
 
         <div class="form-group">
         {!! Form::label('date of birth', 'birthday') !!}
-        {!! Form::text('birthday',null,['class'=>'form-control']) !!}
+        {!! Form::date('birthday',null,['class'=>'form-control']) !!}
     </div>
 
 

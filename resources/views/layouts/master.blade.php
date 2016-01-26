@@ -27,12 +27,12 @@
       </li>
   </ul>
       
-  <ul class="navbar-form pull-right">
+  <ul class="navbar-form pull-right col-sm-4">
       @if(Auth::check())
-        <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+        <a class="nav-link" href="{{ route('logout') }}"><font color="white">Logout</font></a>
   </ul>
   @else
-    <a class="nav-link" href="{{ route('login') }}">Login</a>
+    <a class="nav-link" href="{{ route('login') }}"><font color="white">Login</font></a>
   </ul>
   @endif
  </div><!--/.nav-collapse -->

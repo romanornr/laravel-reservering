@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     /**
-     * table from flight.
+     * table from booking.
      *
      * @var
      */

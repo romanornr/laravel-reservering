@@ -22,9 +22,11 @@
     <li class="nav-item active">
       <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
     </li>
+    @if(Auth::check())
       <li class="nav-item">
         <a class="nav-link" href="/customer">Customers</a>
       </li>
+      @endif
   </ul>
       
   <ul class="navbar-form pull-right col-sm-4">

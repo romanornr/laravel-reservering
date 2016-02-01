@@ -28,7 +28,10 @@ route::post('aanvraag/save', ['uses' => 'TravelrequestController@store']);
 
 //Customer
 Route::resource('customer', 'CustomerController');
-Route::get('customer', function () {
+
+Route::group(['middleware' => 'auth'], function()
+{
+	Route::get('customer', function () {
     $query = Request::get('q');
     $Repository = App::make('App\Repositories\Customer\DbCustomerRepository');
         $customer = $query
@@ -36,6 +39,7 @@ Route::get('customer', function () {
             : $Repository->getAll();
 
     return View::make('customer.index')->withCustomer($customer);
+    });
 });
 
 //BookingDetails
